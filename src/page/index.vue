@@ -14,7 +14,7 @@ export default {
     }
   },
   created(){
-  	let a = fetch('GET','/top_artists?offset=0&limit=30');
+  	let a = fetch('GET','/api/artist/albums/166009',{id:166009,offset:0,total:true,limit:5});
   	console.log(a)
   }
 }

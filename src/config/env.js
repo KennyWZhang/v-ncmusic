@@ -1,8 +1,8 @@
 let BaseApiUrl;
 if (location.host.indexOf('localhost')>-1){
-    BaseApiUrl = 'http://localhost:3000';
+    BaseApiUrl = '';
 }else{
-    BaseApiUrl = 'http://xx.xx.com/api.php';
+    BaseApiUrl = 'http://music.163.com';
 }
 export {
     BaseApiUrl,
