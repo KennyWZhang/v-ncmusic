@@ -1,22 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/components/Hello'
-import index from '@/page/index'
-import list from '@/page/list'
 
 Vue.use(Router)
 
 const route = new Router({
   routes: [
     {
-      path: '/',
-      name: 'index',
-      component: index
+      path:'',
+      redirect:'/index'
+    },
+    {
+      path: '/index',name: 'index',
+      component: resolve => require(['../page/index.vue'], resolve),
+      children:[{
+        path:'my',
+        component:resolve => require(['../page/index/my.vue'], resolve)
+      },{
+        path:'news',
+        component:resolve => require(['../page/index/news.vue'], resolve)
+      },{
+        path:'friends',
+        component:resolve => require(['../page/index/friends.vue'], resolve)
+      }]
     },
     {
       path: '/list',
       name: 'list',
-      component: list
+      component: resolve => require(['../page/list.vue'], resolve),
     }
   ]
 })

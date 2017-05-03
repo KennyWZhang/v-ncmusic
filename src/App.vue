@@ -10,14 +10,9 @@ export default {
   name: 'app'
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang='scss'>
+  @import 'style/common.scss';
+  @import url('http://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css');
+  @import url('http://at.alicdn.com/t/font_rg9cj9lz9q7zxgvi.css')
 </style>
+
