@@ -68,3 +68,9 @@ $fc:#fff;
 	justify-content: $type;
 
 }
+@mixin disFlex{
+	display:flex;
+}
+@mixin flex{
+	flex:1;
+}

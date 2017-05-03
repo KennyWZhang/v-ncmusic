@@ -9,28 +9,38 @@
     opacity: 0;
 }
 
-.weui-tab{
+.tab{
 	background:$red;
 	height:0.5rem;
+  width:100%;
 	position:relative;
 	color:#fff;
 }
-.weui-navbar{
+.navbar{
+  position:absolute;
 	width:50%;
 	left:50%;
 	margin-left:-25%;
 	height:100%;
+  @include disFlex();
 }
-.weui-navbar__item{
+.navbar__item{
+  @include flex();
 	background:$red;
 	height:100%;
 	padding:0;
+  text-align:center;
 	.iconfont{
-		color:#fff;
-		font-size:0.2rem;
+		color:#ddd;
+		font-size:0.24rem;
 		height: .5rem;	
    	line-height: .5rem; 
 	}
+  &.active{
+    i{
+      color:#fff;
+    }
+  }
 }
 .nav-right{
 	position:absolute;
@@ -51,19 +61,19 @@
 <template>
 	<div class="">
 		<header>
-			<div class="weui-tab">
+			<div class="tab">
 				<div class="nav-left">
 		    	<i class="iconfont icon-list"></i>
 					
 				</div>
-		    <div class="weui-navbar">
-		        <div class="weui-navbar__item weui-bar__item_on" @click="$router.push({path:'index/my'})">
-	            <i class="iconfont icon-yinle"></i>
-		        </div>
-	        <div class="weui-navbar__item">
+		    <div class="navbar">
+	        <div class="navbar__item" :class="{'active':$route.name=='my'}" @click="$router.push({name:'my'})">
+            <i class="iconfont icon-yinle"></i>
+	        </div>
+	        <div class="navbar__item" :class="{'active':$route.name=='news'}" @click="$router.push({name:'news'})">
             <i class="iconfont icon-yunyinyue"></i>
 	        </div>
-	        <div class="weui-navbar__item">
+	        <div class="navbar__item" :class="{'active':$route.name=='friends'}" @click="$router.push({path:'friends'})">
             <i class="iconfont icon-haoyou"></i>
  	        </div>
 
@@ -87,7 +97,6 @@
 <script>
 import fetch from '../config/fetch'
 export default {
-  name: 'index',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

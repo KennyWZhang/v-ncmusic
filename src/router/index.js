@@ -13,13 +13,13 @@ const route = new Router({
       path: '/index',name: 'index',
       component: resolve => require(['../page/index.vue'], resolve),
       children:[{
-        path:'my',
+        path:'my',name:'my',
         component:resolve => require(['../page/index/my.vue'], resolve)
       },{
-        path:'news',
+        path:'news',name:'news',
         component:resolve => require(['../page/index/news.vue'], resolve)
       },{
-        path:'friends',
+        path:'friends',name:'friends',
         component:resolve => require(['../page/index/friends.vue'], resolve)
       }]
     },
