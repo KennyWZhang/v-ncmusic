@@ -1,6 +1,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
-@import './../../style/mixin.scss';
+@import './../../../style/mixin.scss';
 
 </style>
 
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import fetch from '../../config/fetch'
+import fetch from '../../../config/fetch'
 export default {
   data () {
     return {

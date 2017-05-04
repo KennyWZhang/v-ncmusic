@@ -1,14 +1,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
 @import '../style/mixin.scss';
-.router-index-enter-active, .router-index-leave-active {
-    transition: all .4s;
-}
-.router-index-enter, .router-index-leave-active {
-    transform: translate3d(2rem, 0, 0);
-    opacity: 0;
-}
-
 .tab{
 	background:$red;
 	height:0.5rem;
@@ -22,7 +14,7 @@
 	left:50%;
 	margin-left:-25%;
 	height:100%;
-  @include disFlex();
+	@include disFlex();
 }
 .navbar__item{
   @include flex();
@@ -70,7 +62,7 @@
 	        <div class="navbar__item" :class="{'active':$route.name=='my'}" @click="$router.push({name:'my'})">
             <i class="iconfont icon-yinle"></i>
 	        </div>
-	        <div class="navbar__item" :class="{'active':$route.name=='news'}" @click="$router.push({name:'news'})">
+	        <div class="navbar__item" :class="{'active':$route.name=='discover'}" @click="$router.push({name:'discover'})">
             <i class="iconfont icon-yunyinyue"></i>
 	        </div>
 	        <div class="navbar__item" :class="{'active':$route.name=='friends'}" @click="$router.push({path:'friends'})">
@@ -84,7 +76,7 @@
 			</div>
 		</header>
 		<section>
-     	<transition name="router-index" mode="out-in">
+     	<transition name="router-slide" mode="out-in">
 				<router-view></router-view>
 			</transition>
 		</section>
@@ -99,12 +91,12 @@ import fetch from '../config/fetch'
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      // msg: 'Welcome to Your Vue.js App'
     }
   },
   created(){
-  	let a = fetch('GET','/api/artist/albums/166009',{id:166009,offset:0,total:true,limit:5});
-  	console.log(a)
+		// let a = fetch('GET','/api/artist/albums/166009',{id:166009,offset:0,total:true,limit:5});
+		// console.log(a)
   }
 }
 </script>

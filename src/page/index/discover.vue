@@ -1,0 +1,66 @@
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang='scss' scoped>
+@import './../../style/mixin.scss';
+.navbar{
+  @include disFlex();
+  background:#fff;
+  .item{
+    @include flex();
+    text-align:center;
+    padding:10px;
+    &.active{
+      color:$red;
+      position:relative;
+      &:after{
+        position:absolute;
+        content:'';
+        width:100%;
+        height:1px;
+        background:$red;
+        left:0;
+        bottom:0;
+      }
+    }
+  }
+}
+</style>
+
+<template>
+	<div class="">
+		<header>
+  		<div class="navbar">
+        <div class="item" :class="{'active':$route.name=='recommend'}" @click="$router.replace({name:'recommend'})">
+            个性推荐
+        </div>
+        <div class="item" :class="{'active':$route.name=='songList'}" @click="$router.replace({name:'songList'})">
+            歌单
+        </div>
+        <div class="item" :class="{'active':$route.name=='fmList'}" @click="$router.replace({name:'fmList'})">
+            电台
+        </div>
+        <div class="item" :class="{'active':$route.name=='rankingList'}" @click="$router.replace({name:'rankingList'})">
+            排行榜
+        </div>
+       </div>
+		</header>
+    <section>
+      <transition name="router-slide" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </section>
+	</div>
+</template>
+
+<script>
+import fetch from '../../config/fetch'
+export default {
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  created(){
+
+  }
+}
+</script>
