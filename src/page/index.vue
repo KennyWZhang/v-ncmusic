@@ -71,13 +71,13 @@ section.second-container{
 					
 				</div>
 		    <div class="navbar">
-	        <div class="navbar__item" :class="{'active':$route.name=='my'}" @click="$router.push({name:'my'})">
+	        <div class="navbar__item" :class="{'active':$route.matched[1].name=='my'}" @click="$router.push({name:'my'})">
             <i class="iconfont icon-yinle"></i>
 	        </div>
-	        <div class="navbar__item" :class="{'active':$route.name=='discover'}" @click="$router.push({name:'discover'})">
+	        <div class="navbar__item" :class="{'active':$route.matched[1].name=='discover'}" @click="$router.push({name:'discover'})">
             <i class="iconfont icon-yunyinyue"></i>
 	        </div>
-	        <div class="navbar__item" :class="{'active':$route.name=='friends'}" @click="$router.push({path:'friends'})">
+	        <div class="navbar__item" :class="{'active':$route.matched[1].name=='friends'}" @click="$router.push({path:'friends'})">
             <i class="iconfont icon-haoyou"></i>
  	        </div>
 
@@ -107,6 +107,7 @@ export default {
     }
   },
   created(){
+  	console.log(this.$route.matched[0].name)
 		// let a = fetch('GET','/api/artist/albums/166009',{id:166009,offset:0,total:true,limit:5});
 		// console.log(a)
   }

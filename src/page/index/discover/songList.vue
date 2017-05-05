@@ -75,7 +75,7 @@ nav{
 </style>
 
 <template>
-	<div class="has-navbar">
+	<div class="has-navbar" v-if="data">
 		<header>
       <div class="background" :style="'background-image:url('+ data[0].coverImgUrl +')'"></div>
   		<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
@@ -121,7 +121,7 @@ export default {
   data () {
     return {
       data:null,
-      itemHeight:window.innerWidth/2
+      itemHeight:window.innerWidth/2,
     }
   },
   created(){
