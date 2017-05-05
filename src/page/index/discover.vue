@@ -1,6 +1,12 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
 @import './../../style/mixin.scss';
+header.second-nav{
+  position:fixed;
+  left:0;
+  width:100%;
+  z-index:100;
+}
 .navbar{
   @include disFlex();
   background:#fff;
@@ -27,7 +33,7 @@
 
 <template>
 	<div class="">
-		<header>
+		<header class="second-nav">
   		<div class="navbar">
         <div class="item" :class="{'active':$route.name=='recommend'}" @click="$router.replace({name:'recommend'})">
             个性推荐

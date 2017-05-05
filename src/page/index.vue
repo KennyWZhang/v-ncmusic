@@ -1,6 +1,18 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
 @import '../style/mixin.scss';
+header{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	z-index: 100;
+}
+section.second-container{
+	flex:1;
+	flex-direction: column;
+	overflow-y:auto;
+}
 .tab{
 	background:$red;
 	height:0.5rem;
@@ -51,8 +63,8 @@
 </style>
 
 <template>
-	<div class="">
-		<header>
+	<div class="parent-container">
+		<header class="parent-nav">
 			<div class="tab">
 				<div class="nav-left">
 		    	<i class="iconfont icon-list"></i>
@@ -75,7 +87,7 @@
 		    </div>
 			</div>
 		</header>
-		<section>
+		<section class="second-container has-navbar">
      	<transition name="router-slide" mode="out-in">
 				<router-view></router-view>
 			</transition>

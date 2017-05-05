@@ -42,11 +42,6 @@ const route = new Router({
         component:resolve => require(['../page/index/friends.vue'], resolve)
       }]
     },
-    {
-      path: '/list',
-      name: 'list',
-      component: resolve => require(['../page/list.vue'], resolve),
-    }
   ]
 })
 route.afterEach((from,to)=>{

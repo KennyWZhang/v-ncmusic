@@ -32,46 +32,46 @@ section .icon-section{
 	<div class="">
 		<header>
 			<div class="weui-cells" style="margin-top:0">
-		    <a class="weui-cell weui-cell_access" href="javascript:;">
-		        <div class="weui-cell__hd">
-		          <i class="iconfont icon-yinle"></i>
-		        </div>
-		        <div class="weui-cell__bd">
-		            <p>本地音乐</p>
-		        </div>
-		    </a>
-		    <a class="weui-cell weui-cell_access" href="javascript:;">
-		        <div class="weui-cell__hd">
-		          <i class="iconfont icon-zuijinbofang"></i>
-		        </div>
-		        <div class="weui-cell__bd">
-		            <p>最近播放</p>
-		        </div>
-		    </a>
-		    <a class="weui-cell weui-cell_access" href="javascript:;">
-		        <div class="weui-cell__hd">
-		          <i class="iconfont icon-xiazai"></i>
-		        </div>
-		        <div class="weui-cell__bd">
-		            <p>下载管理</p>
-		        </div>
-		    </a>
-		    <a class="weui-cell weui-cell_access" href="javascript:;">
-		        <div class="weui-cell__hd">
-		          <i class="iconfont icon-diantai"></i>
-		        </div>
-		        <div class="weui-cell__bd">
-		            <p>我的电台</p>
-		        </div>
-		    </a>
-		    <a class="weui-cell weui-cell_access" href="javascript:;">
-		        <div class="weui-cell__hd">
-		          <i class="iconfont icon-shoucang"></i>
-		        </div>
-		        <div class="weui-cell__bd">
-		            <p>我的收藏</p>
-		        </div>
-		    </a>
+			    <a class="weui-cell weui-cell_access" href="javascript:;">
+			        <div class="weui-cell__hd">
+			          <i class="iconfont icon-yinle"></i>
+			        </div>
+			        <div class="weui-cell__bd">
+			            <p>本地音乐</p>
+			        </div>
+			    </a>
+			    <a class="weui-cell weui-cell_access" href="javascript:;">
+			        <div class="weui-cell__hd">
+			          <i class="iconfont icon-zuijinbofang"></i>
+			        </div>
+			        <div class="weui-cell__bd">
+			            <p>最近播放</p>
+			        </div>
+			    </a>
+			    <a class="weui-cell weui-cell_access" href="javascript:;">
+			        <div class="weui-cell__hd">
+			          <i class="iconfont icon-xiazai"></i>
+			        </div>
+			        <div class="weui-cell__bd">
+			            <p>下载管理</p>
+			        </div>
+			    </a>
+			    <a class="weui-cell weui-cell_access" href="javascript:;">
+			        <div class="weui-cell__hd">
+			          <i class="iconfont icon-diantai"></i>
+			        </div>
+			        <div class="weui-cell__bd">
+			            <p>我的电台</p>
+			        </div>
+			    </a>
+			    <a class="weui-cell weui-cell_access" href="javascript:;">
+			        <div class="weui-cell__hd">
+			          <i class="iconfont icon-shoucang"></i>
+			        </div>
+			        <div class="weui-cell__bd">
+			            <p>我的收藏</p>
+			        </div>
+			    </a>
 			</div>
 		</header>
 		<div class="gap">

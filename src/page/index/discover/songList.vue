@@ -12,10 +12,20 @@
 header{
   position:relative;
   h4,h3{
-    color:#eee;
+    color:#fff;
   }
   h3{
     font-size:14px;
+  }
+  p{
+    color:#ccc;
+    font-size:12px;
+    @include multiTextOverflow(1);
+  }
+}
+.weui-media-box_appmsg{
+  &:before{
+    display:none;
   }
 }
 .weui-media-box_appmsg .weui-media-box__hd{
@@ -25,7 +35,7 @@ header{
 .background{
   padding:10px 0;
   background-position: center center;
-  filter: blur(10px);
+  filter: blur(20px);
   position:absolute;
   width:100%;
   top:0;
@@ -45,12 +55,27 @@ header{
         height:100%;
       }
     }
+    .text{
+      padding: 10px;
+      p{
+        @include multiTextOverflow(2);
+        padding-right:20%;
+      }
+    }
+  }
+}
+nav{
+  padding:10px 0px;
+  .btn{
+    border:1px solid #999;
+    border-radius:20px;
+    padding:5px 20px;
   }
 }
 </style>
 
 <template>
-	<div class="">
+	<div class="has-navbar">
 		<header>
       <div class="background" :style="'background-image:url('+ data[0].coverImgUrl +')'"></div>
   		<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
@@ -59,11 +84,20 @@ header{
         </div>
         <div class="weui-media-box__bd">
           <h4 class="weui-media-box__title">精品歌单</h4>
-          <h3 class="weui-media-box__title">标题一</h3>
-          <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+          <h3 class="weui-media-box__title">{{data[0].name}}</h3>
+          <p class="weui-media-box__desc">{{data[0].description}}</p>
         </div>
       </a>
 		</header>
+    <nav>
+      <a class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__bd">
+            <span class="btn">全部歌单</span>
+        </div>
+        <div class="weui-cell__ft">
+        </div>
+      </a>
+    </nav>
     <transition name="showlist" v-if="data">
       <section>
         <div class="list">
@@ -71,7 +105,9 @@ header{
             <div class="pic" :style="{'height':itemHeight+'px'}">
               <img :src="x.coverImgUrl" alt="">
             </div>
-            <p></p>
+            <div class="text">
+              <p>{{x.name}}</p>
+            </div>
           </div>
         </div>
       </section>
