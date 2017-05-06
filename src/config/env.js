@@ -1,5 +1,5 @@
 let BaseApiUrl;
-if (location.host.indexOf('localhost')>-1){
+if (process.env.NODE_ENV !== 'production'){
     BaseApiUrl = '';
 }else{
     BaseApiUrl = 'http://music.163.com';

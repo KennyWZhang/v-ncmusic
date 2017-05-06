@@ -1,6 +1,12 @@
-# v-ncmusic
+# v-ncmusic 
+- 一个基于vue2的网易云音乐移动web版
 
-> a vue project base on node
+> a vue project base on Vue && 163music API
+
+- before May ——搭建项目框架，主要是fetch封装与vue-router的配置。
+- 0501-0506 ——搭建Sass的开发环境，编写主框架的样式
+- 0506 —— 更新songList与无线滚动指令。
+
 
 ## Build Setup
 

@@ -32,7 +32,7 @@ header.second-nav{
 </style>
 
 <template>
-	<div class="">
+	<div class="parent-container">
 		<header class="second-nav">
   		<div class="navbar">
         <div class="item" :class="{'active':$route.name=='recommend'}" @click="$router.replace({name:'recommend'})">
@@ -49,11 +49,11 @@ header.second-nav{
         </div>
        </div>
 		</header>
-    <section>
+    <!-- <section class="second-container has-navbar"> -->
       <transition name="router-slide" mode="out-in">
         <router-view></router-view>
       </transition>
-    </section>
+    <!-- </section> -->
 	</div>
 </template>
 

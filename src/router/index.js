@@ -45,6 +45,6 @@ const route = new Router({
   ]
 })
 route.afterEach((from,to)=>{
-    console.log(from.name)
+    // console.log(from.name)
 })
 export default route;

@@ -14,6 +14,26 @@ new Vue({
   components: { App }
 })
 
-router.afterEach(function(to){
-    console.log(to)
+Vue.directive('infiniteScroll', {
+  // 当绑定元素插入到 DOM 中。
+  inserted: function (el,binding,vnode) {
+    // 聚焦元素
+
+    el.addEventListener('scroll',function(e){
+    	// let parentNode = el;
+    	let childNode = el.childNodes[0];
+
+    	let childHeight = childNode.clientHeight;
+    	let parentHeight = el.clientHeight;
+    	let scrollTop = el.scrollTop;
+    	//滚动到底部执行加载方法
+    	if(childHeight - scrollTop + childNode.offsetTop-1 <= parentHeight){
+    	  binding.value();
+    	}
+    })
+    
+  },
+  update:function(el){
+
+  }
 })

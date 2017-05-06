@@ -8,11 +8,6 @@ header{
 	width:100%;
 	z-index: 100;
 }
-section.second-container{
-	flex:1;
-	flex-direction: column;
-	overflow-y:auto;
-}
 .tab{
 	background:$red;
 	height:0.5rem;
@@ -21,7 +16,7 @@ section.second-container{
 	color:#fff;
 }
 .navbar{
-  position:absolute;
+  	position:absolute;
 	width:50%;
 	left:50%;
 	margin-left:-25%;
@@ -77,7 +72,7 @@ section.second-container{
 	        <div class="navbar__item" :class="{'active':$route.matched[1].name=='discover'}" @click="$router.push({name:'discover'})">
             <i class="iconfont icon-yunyinyue"></i>
 	        </div>
-	        <div class="navbar__item" :class="{'active':$route.matched[1].name=='friends'}" @click="$router.push({path:'friends'})">
+	        <div class="navbar__item" :class="{'active':$route.matched[1].name=='friends'}" @click="$router.push({name:'friends'})">
             <i class="iconfont icon-haoyou"></i>
  	        </div>
 
@@ -88,7 +83,7 @@ section.second-container{
 			</div>
 		</header>
 		<section class="second-container has-navbar">
-     	<transition name="router-slide" mode="out-in">
+     		<transition name="router-slide" mode="out-in">
 				<router-view></router-view>
 			</transition>
 		</section>

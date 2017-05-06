@@ -18,7 +18,7 @@ header{
     font-size:14px;
   }
   p{
-    color:#ccc;
+    color:#eee;
     font-size:12px;
     @include multiTextOverflow(1);
   }
@@ -50,6 +50,9 @@ header{
     .pic{
       width:100%;
       height:50px;
+      &:nth-child(2n+1){
+        padding-right:1px;
+      }
       img{
         width:100%;
         height:100%;
@@ -75,7 +78,8 @@ nav{
 </style>
 
 <template>
-	<div class="has-navbar" v-if="data">
+	<div class="second-container has-navbar" v-if="data.length > 0"  v-infiniteScroll="getData">
+    <div class="inner-container">
 		<header>
       <div class="background" :style="'background-image:url('+ data[0].coverImgUrl +')'"></div>
   		<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
@@ -112,6 +116,7 @@ nav{
         </div>
       </section>
     </transition>
+    </div>
 	</div>
 </template>
 
@@ -120,18 +125,26 @@ import fetch from '../../../config/fetch'
 export default {
   data () {
     return {
-      data:null,
+      data:[],
+      offset:0,
+      // listNode:null,
       itemHeight:window.innerWidth/2,
     }
   },
   created(){
     this.getData();
   },
+  mounted(){
+
+  },
+  computed:{
+  },
   methods:{
     async getData(){
-      let a = await fetch('GET','/api/playlist/list',{offset:0,limit:10,order:'hot'});
-      this.data = a.playlists;
-    }
+      let re = await fetch('GET','/api/playlist/list',{offset:this.offset,limit:10,order:'hot'});
+      this.data = this.data.concat(re.playlists);
+      this.offset += 10;
+    },
   }
 }
 </script>
