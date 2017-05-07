@@ -32,7 +32,7 @@ header.second-nav{
 </style>
 
 <template>
-	<div class="parent-container">
+	<div class="parent-container" :style="{height:innerHeight+'px'}">
 		<header class="second-nav">
   		<div class="navbar">
         <div class="item" :class="{'active':$route.name=='recommend'}" @click="$router.replace({name:'recommend'})">
@@ -62,7 +62,7 @@ import fetch from '../../config/fetch'
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      innerHeight:window.innerHeight-50
     }
   },
   created(){

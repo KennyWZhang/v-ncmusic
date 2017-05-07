@@ -10,8 +10,8 @@ header{
 }
 .tab{
 	background:$red;
-	height:0.5rem;
-  width:100%;
+	height:.5rem;
+	width:100%;
 	position:relative;
 	color:#fff;
 }
