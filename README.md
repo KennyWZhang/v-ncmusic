@@ -3,6 +3,8 @@
 
 > a vue project base on Vue && 163music API
 
+<img src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/songlist.png">
+
 - before May ——搭建项目框架，主要是fetch封装与vue-router的配置。
 - 0501-0506 ——搭建Sass的开发环境，编写主框架的样式
 - 0506 —— 更新songList与无线滚动指令。
