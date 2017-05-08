@@ -118,6 +118,9 @@ body{
 .has-navbar{
     padding-top:0.5rem;
 }
+.has-footbar{
+    padding-bottom:0.5rem;
+}
 .has-sec-navbar{
     padding-top:0.4rem;
 }
@@ -143,4 +146,37 @@ body{
     flex-direction: column;
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
+}
+//歌单header
+header.desc-head{
+  position:relative;
+  h4,h3{
+    color:#fff;
+    font-size:.16rem;
+  }
+  h3{
+    font-size:.14rem;
+  }
+  p{
+    color:#eee;
+    font-size:.12rem;
+    @include multiTextOverflow(1);
+  }
+  .background{
+    background-position: center center;
+    filter: blur(.2rem);
+    position:absolute;
+    width:100%;
+    top:0;
+    left:0;
+    height:100%;
+  }
+  .weui-media-box_appmsg{
+    &:before{
+      display:none;
+    }
+  }
+  .weui-media-box_appmsg .weui-media-box__hd{
+    @include wh(.8rem,.8rem)
+  }
 }

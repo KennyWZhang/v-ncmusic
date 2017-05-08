@@ -12,7 +12,8 @@
 - 0506 —— 更新songList与无限滚动指令。
 - 0507 —— debounce完善infiniteScroll指令
 
- 
+> 备注
+1.所有fixed或者绝对定位的元素都不占位，所以flex在竖直方向上的自适应并没有生效，但此处冗余的flex布局先保留，留待后期优化。 
 
 ## Build Setup
 

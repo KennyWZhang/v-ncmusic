@@ -50,7 +50,7 @@ Vue.directive('infiniteScroll', {
     	// let parentNode = el;
     	let childNode = el.childNodes[0];
     	let childHeight = childNode.offsetHeight;
-    	let parentHeight = el.offsetHeight-childNode.offsetTop;
+    	let parentHeight = el.offsetHeight;
     	let scrollTop = el.scrollTop;
     	// console.log(scrollTop-oldScrollTop)
     	//滚动到底部执行加载方法

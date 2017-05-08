@@ -23,6 +23,16 @@ header{
     font-size:.12rem;
     @include multiTextOverflow(1);
   }
+  .background{
+    padding:.1rem 0;
+    background-position: center center;
+    filter: blur(.2rem);
+    position:absolute;
+    width:100%;
+    top:0;
+    left:0;
+    height:100%;
+  }
 }
 .weui-media-box_appmsg{
   &:before{
@@ -31,17 +41,6 @@ header{
 }
 .weui-media-box_appmsg .weui-media-box__hd{
   @include wh(.8rem,.8rem)
-}
-
-.background{
-  padding:.1rem 0;
-  background-position: center center;
-  filter: blur(.2rem);
-  position:absolute;
-  width:100%;
-  top:0;
-  left:0;
-  height:100%;
 }
 .list{
   @include disFlex();
@@ -79,7 +78,7 @@ nav{
 </style>
 
 <template>
-	<div class="second-container has-sec-navbar" v-if="data.length > 0"  v-infiniteScroll="getData">
+	<div class="second-container" v-if="data.length > 0"  v-infiniteScroll="getData">
     <div class="inner-container">
   		<header>  
         <div class="background" :style="'background-image:url('+ data[0].coverImgUrl +')'"></div>

@@ -2,7 +2,7 @@
 <style lang='scss' scoped>
 @import './../../style/mixin.scss';
 header.second-nav{
-  position:fixed;
+  position:relative;
   left:0;
   width:100%;
   z-index:100;
@@ -28,6 +28,9 @@ header.second-nav{
       }
     }
   }
+}
+.parent-container{
+  height:inherit;
 }
 </style>
 
@@ -62,7 +65,7 @@ import fetch from '../../config/fetch'
 export default {
   data () {
     return {
-      innerHeight:window.innerHeight-50*window.innerWidth/375
+      innerHeight:window.innerHeight-100*window.innerWidth/375
     }
   },
   created(){
