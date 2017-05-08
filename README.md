@@ -1,5 +1,6 @@
 # v-ncmusic 
 > 一个基于vue2的网易云音乐移动web版
+
 > a vue project base on Vue && 163music API
 
 - before May ——搭建项目框架，主要是fetch封装与vue-router的配置。
