@@ -2,7 +2,8 @@
 > 一个基于vue2的网易云音乐移动web版
 
 > a vue project base on Vue && 163music API
-
+ 
+> API来自网易云音乐官方，感谢[Binaryify](https://github.com/Binaryify/NeteaseCloudMusicApi)
 <img src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/songlist.png">
 
 - before May ——搭建项目框架，主要是fetch封装与vue-router的配置。
