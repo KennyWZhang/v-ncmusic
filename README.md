@@ -6,10 +6,11 @@
 > API来自网易云音乐官方，感谢[Binaryify](https://github.com/Binaryify/NeteaseCloudMusicApi)的整理
 
 ##歌单列表
-<img width="300" src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/songlist1.png">
+<br><img width="300" src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/songlist1.png">
 
 ##歌单详情
-<img swidth="300" src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/albumDetail.png">
+<br><img width="300" src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/albumDetail.png">
+
 
 - before May ——搭建项目框架，主要是fetch封装与vue-router的配置。
 - 0501-0506 ——搭建Sass的开发环境，编写主框架的样式
