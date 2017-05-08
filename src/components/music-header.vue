@@ -9,7 +9,7 @@ nav.parent-nav{
 }
 .tab{
 	background:$red;
-	height:.5rem;
+	height:.44rem;
 	width:100%;
 	position:relative;
 	color:#fff;
@@ -30,9 +30,9 @@ nav.parent-nav{
   text-align:center;
 	.iconfont{
 		color:#ddd;
-		font-size:0.24rem;
-		height: .5rem;	
-   	line-height: .5rem; 
+		font-size:0.20rem;
+		height: .44rem;	
+   	line-height: .44rem; 
 	}
   &.active{
     i{
@@ -43,11 +43,11 @@ nav.parent-nav{
 .nav-right{
 	position:absolute;
 	right:0;
-	height:.5rem;
-	line-height:.5rem;
+	height:.44rem;
+	line-height:.44rem;
 	i{
 		color:#fff;
-		font-size:.20rem;
+		font-size:.18rem;
 		padding-right:.1rem;
 	}
 }

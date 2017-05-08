@@ -37,6 +37,17 @@
     }
   }
 }
+.weui-media-box{
+  padding:.08rem;
+  width:100%;
+  align-self: center;
+}
+section .icon-section{
+  color:#999
+}
+.weui-media-box_appmsg .weui-media-box__hd{
+  @include wh(50px,50px)
+}
 </style>
 
 <template>
@@ -64,27 +75,27 @@
         <div class="disFlex">
           <div class="flex">
             <i class="iconfont icon-tianjia"></i>
-            <p>2123</p>
+            <p>{{data.subscribedCount}}</p>
           </div>
           <div class="flex">
             <i class="iconfont icon-pinglun"></i>
-            
+            <p>{{data.commentCount}}</p>
           </div>
           <div class="flex">
             <i class="iconfont icon-fenxiang"></i>
-            
+            <p>{{data.shareCount}}</p>
           </div>
           <div class="flex">
             <i class="iconfont icon-xiazai"></i>
-            
+            <p>下载</p>
           </div>
         </div>
       </header>
       <section>
-        <a href="javascript:void(0);" class="disFlex" v-for="x in data.tracks">
+        <a href="javascript:void(0);" class="disFlex" v-for="(x,index) in data.tracks">
           <a class="weui-media-box weui-media-box_appmsg">
             <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb" src="" alt="">
+                {{index+1}}
             </div>
             <div class="weui-media-box__bd">
                 <h4 class="weui-media-box__title">{{x.name}}</h4>

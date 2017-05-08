@@ -82,11 +82,11 @@ section .icon-section{
 			<a href="javascript:void(0);" class="disFlex">
 				<a class="weui-media-box weui-media-box_appmsg">
 					<div class="weui-media-box__hd">
-					    <img class="weui-media-box__thumb" src="" alt="">
+				    <img class="weui-media-box__thumb" src="" alt="">
 					</div>
 					<div class="weui-media-box__bd">
-					    <h4 class="weui-media-box__title">标题一</h4>
-					    <p class="weui-media-box__desc">由各种物质组</p>
+				    <h4 class="weui-media-box__title">标题一</h4>
+				    <p class="weui-media-box__desc">由各种物质组</p>
 					</div>
 				</a>
 				<a class="weui-media-box flex">

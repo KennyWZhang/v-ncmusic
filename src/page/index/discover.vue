@@ -65,7 +65,7 @@ import fetch from '../../config/fetch'
 export default {
   data () {
     return {
-      innerHeight:window.innerHeight-100*window.innerWidth/375
+      innerHeight:window.innerHeight-84*window.innerWidth/375
     }
   },
   created(){

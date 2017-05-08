@@ -171,12 +171,23 @@ header.desc-head{
     left:0;
     height:100%;
   }
+  .weui-media-box{
+    padding:.08rem;
+    width:100%;
+    align-self: center;
+  }
   .weui-media-box_appmsg{
     &:before{
       display:none;
     }
   }
   .weui-media-box_appmsg .weui-media-box__hd{
+    @include wh(50px,50px)
+  }
+  .weui-media-box_appmsg .weui-media-box__hd{
     @include wh(.8rem,.8rem)
+  }
+  section .icon-section{
+    color:#999
   }
 }
