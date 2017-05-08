@@ -46,8 +46,11 @@ header{
 	right:0;
 	height:.5rem;
 	line-height:.5rem;
-	padding-right:10px;
-	i{color:#fff;}
+	padding-right:.1rem;
+	i{
+		color:#fff;
+		font-size:.20rem;
+	}
 }
 .nav-left{
 	@extend .nav-right;

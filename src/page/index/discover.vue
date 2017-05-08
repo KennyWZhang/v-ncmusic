@@ -13,7 +13,7 @@ header.second-nav{
   .item{
     @include flex();
     text-align:center;
-    padding:10px;
+    padding:.1rem;
     &.active{
       color:$red;
       position:relative;
@@ -21,7 +21,7 @@ header.second-nav{
         position:absolute;
         content:'';
         width:100%;
-        height:1px;
+        height:.01rem;
         background:$red;
         left:0;
         bottom:0;
@@ -62,7 +62,7 @@ import fetch from '../../config/fetch'
 export default {
   data () {
     return {
-      innerHeight:window.innerHeight-50
+      innerHeight:window.innerHeight-50*window.innerWidth/375
     }
   },
   created(){

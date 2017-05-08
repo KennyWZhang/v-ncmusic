@@ -42,6 +42,10 @@ const route = new Router({
         component:resolve => require(['../page/index/friends.vue'], resolve)
       }]
     },
+    {
+      path:'/albumDetail/:id',name:'albumDetail',
+      component:resolve => require(['../page/albumDetail.vue'])
+    }
   ]
 })
 route.afterEach((from,to)=>{

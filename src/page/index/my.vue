@@ -2,7 +2,7 @@
 <style lang='scss' scoped>
 @import './../../style/mixin.scss';
 .weui-cell i{
-  padding-right:10px;
+  padding-right:.1rem;
   font-size:.20rem;
   color:$red;
 }
