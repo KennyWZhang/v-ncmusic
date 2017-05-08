@@ -6,9 +6,10 @@ nav.parent-nav{
 	left:0;
 	width:100%;
 	z-index: 100;
+	background:$red;
+
 }
 .tab{
-	background:$red;
 	height:.44rem;
 	width:100%;
 	position:relative;
@@ -47,7 +48,7 @@ nav.parent-nav{
 	line-height:.44rem;
 	i{
 		color:#fff;
-		font-size:.18rem;
+		font-size:.16rem;
 		padding-right:.1rem;
 	}
 }

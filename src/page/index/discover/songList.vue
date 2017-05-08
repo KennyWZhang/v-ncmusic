@@ -9,30 +9,8 @@
   opacity: 0;
   transform: translateY(-100%);
 }
-header{
-  position:relative;
-  h4,h3{
-    color:#fff;
-    font-size:.16rem;
-  }
-  h3{
-    font-size:.14rem;
-  }
-  p{
-    color:#eee;
-    font-size:.12rem;
-    @include multiTextOverflow(1);
-  }
-  .background{
-    padding:.1rem 0;
-    background-position: center center;
-    filter: blur(.2rem);
-    position:absolute;
-    width:100%;
-    top:0;
-    left:0;
-    height:100%;
-  }
+.desc-head{
+  padding-top:.1rem;
 }
 .weui-media-box_appmsg{
   &:before{
@@ -80,8 +58,8 @@ nav{
 <template>
 	<div class="second-container" v-if="data.length > 0"  v-infiniteScroll="getData">
     <div class="inner-container">
-  		<header>  
-        <div class="background" :style="'background-image:url('+ data[0].coverImgUrl +')'"></div>
+  		<header class="desc-head">  
+        <div class="blur-background" :style="'background-image:url('+ data[0].coverImgUrl +')'"></div>
     		<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
             <img class="weui-media-box__thumb" :src="data[0].coverImgUrl" alt="">

@@ -2,11 +2,15 @@
 <style lang='scss' scoped>
 @import './../style/mixin.scss';
 .desc-head{
+  overflow: hidden;
   .weui-media-box{
     align-items: flex-start;
     .weui-media-box__title{
       padding-top:.1rem;
     }
+  }
+  .weui-media-box__title,.weui-media-box__desc{
+    @include multiTextOverflow(1)
   }
   .weui-media-box__desc{
     @include disFlex();
@@ -30,6 +34,7 @@
   .flex{
     text-align: center;
     z-index: 1;
+    padding:.1rem 0;
     i{font-size:.2rem;}
     i,p{
       text-align:center;
@@ -48,15 +53,17 @@ section .icon-section{
 .weui-media-box_appmsg .weui-media-box__hd{
   @include wh(50px,50px)
 }
+.song-desc{
+  overflow:hidden;
+}
 </style>
 
 <template>
-	<div class="parent-container">
-    
-    <music-header title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
-    <section class="second-container has-footbar" v-if="data">
-      <header class="desc-head">  
-        <div class="background" :style="'background-image:url('+ data.coverImgUrl +')'"></div>
+	<div class="parent-container"> 
+    <music-header style="position:absolute;" :style="bgRed?'background-image:url('+data.coverImgUrl+');opacity:0.3':'background:transparent'" title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
+    <section class="second-container has-footbar" v-if="data" @scroll="changeHeadBg">
+      <header class="desc-head has-navbar">  
+        <div class="blur-background " :style="'background-image:url('+ data.coverImgUrl +')'"></div>
         <div class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
             <img class="weui-media-box__thumb" :src="data.coverImgUrl" alt="">
@@ -97,7 +104,7 @@ section .icon-section{
             <div class="weui-media-box__hd">
                 {{index+1}}
             </div>
-            <div class="weui-media-box__bd">
+            <div class="weui-media-box__bd song-desc">
                 <h4 class="weui-media-box__title">{{x.name}}</h4>
                 <p class="weui-media-box__desc">{{x.artists | artists}}</p>
             </div>
@@ -125,7 +132,8 @@ export default {
   data () {
     return {
       id: this.$route.params.id,
-      data:''
+      data:'',
+      bgRed:false
     }
   },
   created(){
@@ -145,6 +153,14 @@ export default {
       let re = await fetch('GET','/api/playlist/detail',{id:this.id});
       this.data = re.result;
     },
+    changeHeadBg(e){
+      // console.log(e)
+      if(e.target.scrollTop>44){
+        this.bgRed = true;
+      }else{
+        this.bgRed = false;
+      }
+    }
   }
 }
 </script>

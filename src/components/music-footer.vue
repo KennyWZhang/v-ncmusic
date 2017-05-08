@@ -11,6 +11,15 @@ footer{
 	bottom: 0;
 	width: 100%;
 	background-color: #f7f7fa;
+	.pic{
+		margin-left:.04rem;
+		height:.4rem;
+		width:.4rem;
+		img{
+			width:100%;
+			height:100%;
+		}
+	}
 	.desc{
 		@include flex();
 		padding-left:.1rem;
@@ -33,11 +42,11 @@ footer{
 <template>
 	<footer class="tabbar">	
 		<div class="pic">
-			<img src="" alt="">
+			<img src="http://p4.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177" alt="">
 		</div>
 		<div class="desc">
-			<p>sf</p>
-			<span>dfdf</span>
+			<p>苏打绿</p>
+			<span>空气中的视听与幻觉</span>
 		</div>
 		<div class="bar">
 			<i class="iconfont icon-zanting"></i>

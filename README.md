@@ -5,15 +5,17 @@
 
 > API来自网易云音乐官方，感谢[Binaryify](https://github.com/Binaryify/NeteaseCloudMusicApi)的整理
 
-<img src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/songlist.png">
+<img src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/songlist1.png">
+<img src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/albumDetail.png">
 
 - before May ——搭建项目框架，主要是fetch封装与vue-router的配置。
 - 0501-0506 ——搭建Sass的开发环境，编写主框架的样式
 - 0506 —— 更新songList与无限滚动指令。
 - 0507 —— debounce完善infiniteScroll指令
+- 0508 —— 歌单页（专辑页）的样式开发。
 
-> 备注
-1.所有fixed或者绝对定位的元素都不占位，所以flex在竖直方向上的自适应并没有生效，但此处冗余的flex布局先保留，留待后期优化。 
+> 计划：
+1.决定不再混入框架的样式,故计划删除weui。
 
 ## Build Setup
 

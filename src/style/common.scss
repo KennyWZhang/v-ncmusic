@@ -162,15 +162,6 @@ header.desc-head{
     font-size:.12rem;
     @include multiTextOverflow(1);
   }
-  .background{
-    background-position: center center;
-    filter: blur(.2rem);
-    position:absolute;
-    width:100%;
-    top:0;
-    left:0;
-    height:100%;
-  }
   .weui-media-box{
     padding:.08rem;
     width:100%;
@@ -190,4 +181,13 @@ header.desc-head{
   section .icon-section{
     color:#999
   }
+}
+.blur-background{
+  background-position: center center;
+  filter: blur(.6rem);
+  position:absolute;
+  width:100%;
+  top:0;
+  left:0;
+  height:100%;
 }
