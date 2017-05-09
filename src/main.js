@@ -2,8 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import './config/preload'
 import Vue from 'vue'
+import store from './store/'
 import App from './App'
 import router from './router'
+import './config/plugins.css'
+import plugins from './config/plugins'
+Vue.use(plugins);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -11,7 +16,8 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  store
 })
 
 Vue.prototype.debounce=function(fn, delay) {

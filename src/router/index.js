@@ -45,6 +45,10 @@ const route = new Router({
     {
       path:'/albumDetail/:id',name:'albumDetail',
       component:resolve => require(['../page/albumDetail.vue'],resolve),
+    },
+    {
+      path:'/login',name:'login',
+      component:resolve => require(['../page/login.vue'],resolve),
     }
   ]
 })

@@ -50,17 +50,27 @@
 section .icon-section{
   color:#999
 }
-.weui-media-box_appmsg .weui-media-box__hd{
-  @include wh(50px,50px)
+.tracks-no{
+  @include wh(0.2rem,0.2rem)
+  text-align:center;
+  line-height:0.2rem;
+  padding-right: .1rem;
 }
 .song-desc{
   overflow:hidden;
+  margin-left: .1rem;
+  h4{
+    font-size:.16rem;
+  }
+  p{
+    font-size:0.13rem;
+  }
 }
 </style>
 
 <template>
 	<div class="parent-container"> 
-    <music-header style="position:absolute;" :style="bgRed?'background-image:url('+data.coverImgUrl+');opacity:0.3':'background:transparent'" title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
+    <music-header style="position:absolute;" :style="bgRed?'background-image:url('+data.coverImgUrl+');opacity:0.3;':'background:transparent'" title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
     <section class="second-container has-footbar" v-if="data" @scroll="changeHeadBg">
       <header class="desc-head has-navbar">  
         <div class="blur-background " :style="'background-image:url('+ data.coverImgUrl +')'"></div>
@@ -101,7 +111,7 @@ section .icon-section{
       <section>
         <a href="javascript:void(0);" class="disFlex" v-for="(x,index) in data.tracks">
           <a class="weui-media-box weui-media-box_appmsg">
-            <div class="weui-media-box__hd">
+            <div class="tracks-no">
                 {{index+1}}
             </div>
             <div class="weui-media-box__bd song-desc">

@@ -7,7 +7,7 @@ footer{
 	align-items: center;
 	display: flex;
 	position: absolute;
-	z-index: 500;
+	z-index: 99;
 	bottom: 0;
 	width: 100%;
 	background-color: #f7f7fa;
@@ -38,6 +38,7 @@ footer{
 		}
 	}
 }
+
 </style>
 <template>
 	<footer class="tabbar">	
