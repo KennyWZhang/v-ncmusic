@@ -34,10 +34,7 @@ export default {
   },
   created(){
   	// console.log(this.$route.matched[0].name)
-	  const md5sum = crypto.createHash('md5')
-	  md5sum.update('9909090')
-		let a = fetch('GET','/api/login/cellphone',{phone:'18825188840',password:md5sum.digest('hex'),rememberLogin:true});
-		console.log(a)
+
   }
 }
 </script>
