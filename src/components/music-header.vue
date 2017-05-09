@@ -62,12 +62,51 @@ nav.parent-nav{
 	left:10px;
 	right:inherit;
 }
+.weui-actionsheet{
+	min-width:80%;
+	width:auto;
+	height:100%;
+	overflow:hidden;
+  transform: translateX(-100%);
+  display:flex;
+  flex-direction:column;
+  &.weui-actionsheet_toggle {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+  }
+	.weui-actionsheet__title{
+		height:20%;
+		background:url('http://p3.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177') center center no-repeat;
+		background-size:100% 100%;
+		filter:blur(10px);
+	}
+	.weui-actionsheet__menu{
+		flex:1;
+		background:#efeff4;
+		.weui-cell{
+			background:#fcfcfd;
+		}
+	}
+	.weui-actionsheet__action{
+		justify-content:center;
+		.weui-cell{
+			padding:.1rem .2rem;;
+		}
+	}
+	.weui-cell__bd{
+		padding-left:.1rem;
+	}
+}
+.gap{
+	height:.1rem;
+	line-height:.1rem;
+}
 </style>
 <template>
 	<nav class="parent-nav">
 		<div class="tab">
 			<div class="nav-left">
-	    	<i class="iconfont icon-list" v-if="contain.menu==true"></i>
+	    	<i class="iconfont icon-list" v-if="contain.menu==true" @click="showMenu=!showMenu"></i>
 	    	<i class="iconfont icon-fanhui" v-if="contain.back==true" @click="$router.back()"></i>
 	    	<span class="title">{{title}}</span>
 			</div>
@@ -87,10 +126,98 @@ nav.parent-nav{
 	    	<i class="iconfont icon-section" v-if="contain.select==true"></i>
 	    </div>
 		</div>
+		<div class="menu">
+      <div class="weui-mask" v-show="showMenu" :style="{opacity:Number(showMenu)}" @click="showMenu=!showMenu"></div>
+      <div class="weui-actionsheet" :class="{'weui-actionsheet_toggle':showMenu}">
+          <div class="weui-actionsheet__title">
+              <div class="avatar">
+              	<img src="" alt="">
+              </div>
+          </div>
+          <div class="weui-actionsheet__menu">
+              <a class="weui-cell weui-cell_access">
+                  <div class="weui-cell__hd">
+                    <i class="iconfont icon-xiaoxi"></i>
+                  </div>
+                  <div class="weui-cell__bd">
+                      <p>我的消息</p>
+                  </div>
+              </a>
+              <div class="gap"></div>
+              <a class="weui-cell weui-cell_access">
+                  <div class="weui-cell__hd">
+                    <i class="iconfont icon-friend"></i>
+                  </div>
+                  <div class="weui-cell__bd">
+                      <p>我的好友</p>
+                  </div>
+              </a>
+              <a class="weui-cell weui-cell_access">
+                  <div class="weui-cell__hd">
+                    <i class="iconfont icon-fujin"></i>
+                  </div>
+                  <div class="weui-cell__bd">
+                      <p>附近的人</p>
+                  </div>
+              </a>
+              <div class="gap"></div>
+              <a class="weui-cell weui-cell_access">
+                  <div class="weui-cell__hd">
+                    <i class="iconfont icon-huanfu"></i>
+                  </div>
+                  <div class="weui-cell__bd">
+                      <p>个性皮肤</p>
+                  </div>
+              </a>
+              <a class="weui-cell weui-cell_access">
+                  <div class="weui-cell__hd">
+                    <i class="iconfont icon-yunpan"></i>
+                  </div>
+                  <div class="weui-cell__bd">
+                      <p>音乐云盘</p>
+                  </div>
+              </a>
+          </div>
+          <div class="weui-actionsheet__action disFlex">
+						<a class="weui-cell weui-cell_access">
+						    <div class="weui-cell__hd">
+						      <i class="iconfont icon-night"></i>
+						    </div>
+						    <div class="weui-cell__bd">
+						        <p>夜间模式</p>
+						    </div>
+						</a>
+						<a class="weui-cell weui-cell_access">
+						    <div class="weui-cell__hd">
+						      <i class="iconfont icon-shezhi1"></i>
+						    </div>
+						    <div class="weui-cell__bd">
+						        <p>设置</p>
+						    </div>
+						</a>
+						<a class="weui-cell weui-cell_access" @click="logout()" v-if="userInfo">
+						    <div class="weui-cell__hd">
+						      <i class="iconfont icon-tuichu"></i>
+						    </div>
+						    <div class="weui-cell__bd">
+						        <p>退出</p>
+						    </div>
+						</a>
+						<a class="weui-cell weui-cell_access" @click="$router.push({name:'login'})" v-if="!userInfo">
+						    <div class="weui-cell__hd">
+						      <i class="iconfont icon-erji"></i>
+						    </div>
+						    <div class="weui-cell__bd">
+						        <p>登录</p>
+						    </div>
+						</a>
+          </div>
+      </div>
+  </div>
 	</nav>
 </template>
 <script>
-
+import {mapMutations,mapState} from 'vuex'
 export default{
 	props:{
 		contain:{
@@ -112,11 +239,23 @@ export default{
 	},
 	data(){
 		return{
-
+			showMenu:false,
 		}
 	},
+	computed: {
+	    ...mapState([
+	        'userInfo',
+	    ]),
+	},
 	methods:{
-
+		...mapMutations([
+		    'OUT_LOGIN',
+		]),
+		async logout(){
+			this.OUT_LOGIN();
+			this.showMenu = false;
+			this.$toast('退出成功');
+		}
 	}
 }
 </script>

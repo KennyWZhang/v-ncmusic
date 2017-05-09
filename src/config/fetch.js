@@ -20,7 +20,7 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
 
     if (window.fetch && method == 'fetch') {
         let requestConfig = {
-            credentials: 'omit',
+            credentials: 'include',  //跨域保存cookie
             method: type,
             headers: {
                 'Accept': '*/*',

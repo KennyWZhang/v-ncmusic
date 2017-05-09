@@ -19,6 +19,7 @@
 </template>
 
 <script>
+const crypto = require('crypto')
 import musicHeader from '../components/music-header.vue'
 import musicFooter from '../components/music-footer.vue'
 import fetch from '../config/fetch'
@@ -32,9 +33,11 @@ export default {
     }
   },
   created(){
-  	console.log(this.$route.matched[0].name)
-		// let a = fetch('GET','/api/artist/albums/166009',{id:166009,offset:0,total:true,limit:5});
-		// console.log(a)
+  	// console.log(this.$route.matched[0].name)
+	  const md5sum = crypto.createHash('md5')
+	  md5sum.update('9909090')
+		let a = fetch('GET','/api/login/cellphone',{phone:'18825188840',password:md5sum.digest('hex'),rememberLogin:true});
+		console.log(a)
   }
 }
 </script>
