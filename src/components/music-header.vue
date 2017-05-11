@@ -78,10 +78,26 @@ nav.parent-nav{
 		background-size:100% 100%;
 		overflow:hidden;
 		height:20%;
+		flex-direction:row;
+		align-items:center;
+		justify-content:flex-start;
 		.avatar{
-			width:1rem;
-			height:1rem;
-			border-radius:.5rem;
+			width:.6rem;
+			img{
+				border-radius:.5rem;
+			}
+			p{
+				color:#fff;
+				span{
+
+				}
+			}
+		}
+		.btn{
+			color:#fff;
+			border-radius:.08rem;
+			border:.01rem solid #fff;
+			padding:.02rem .08rem;
 		}
 	}
 	.weui-actionsheet__menu{
@@ -134,9 +150,13 @@ nav.parent-nav{
       <div class="weui-mask" v-show="showMenu" :style="{opacity:Number(showMenu)}" @click="showMenu=!showMenu"></div>
       <div class="weui-actionsheet" :class="{'weui-actionsheet_toggle':showMenu}">
           <div class="weui-actionsheet__title" :style="userInfo&&'background-image:url('+userInfo.profile.backgroundUrl+')'">
-              <div class="avatar" v-if="userInfo">
-              	<img :src="userInfo.profile.avatarUrl" alt="">
-              </div>
+          		<div class="flex">
+          			<div class="avatar" v-if="userInfo">
+          				<img :src="userInfo.profile.avatarUrl" alt="">
+          				<p>{{userInfo.profile.nickname}}</p>
+          			</div>
+          		</div>
+              <div class="btn" @click="sign()">{{isSign?'已签到':'签到'}}</div>
           </div>
           <div class="weui-actionsheet__menu">
               <a class="weui-cell weui-cell_access">
@@ -221,7 +241,7 @@ nav.parent-nav{
 	</nav>
 </template>
 <script>
-import {mapMutations,mapState} from 'vuex'
+import {mapMutations,mapState,mapActions} from 'vuex'
 export default{
 	props:{
 		contain:{
@@ -248,18 +268,21 @@ export default{
 	},
 	computed: {
 	    ...mapState([
-	        'userInfo',
+	        'userInfo','isSign'
 	    ]),
 	},
 	methods:{
 		...mapMutations([
 		    'OUT_LOGIN',
 		]),
+		...mapActions([
+			'sign'
+		]),
 		async logout(){
 			this.OUT_LOGIN();
 			this.showMenu = false;
 			this.$toast('退出成功');
-		}
+		},
 	}
 }
 </script>

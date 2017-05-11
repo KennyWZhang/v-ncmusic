@@ -8,7 +8,8 @@ Vue.use(Vuex)
 
 const state = {
     islogin:null, //是否登录
-    userInfo:null //用户信息
+    userInfo:null, //用户信息
+    isSign:null
 }
 
 export default new Vuex.Store({
