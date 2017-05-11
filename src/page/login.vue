@@ -48,7 +48,7 @@ export default {
     }
   },
   created(){
-    // this.getData();
+    // this.login();
   },
   filters: {
 

@@ -15,8 +15,22 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
-  name: 'app'
+  name: 'app',
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+    ...mapMutations([
+        'INIT_USERINFO',
+    ]),
+  },
+  created(){
+    this.INIT_USERINFO();
+  }
 }
 </script>
 <style lang='scss'>

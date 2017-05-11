@@ -75,10 +75,14 @@ nav.parent-nav{
       transform: translate(0);
   }
 	.weui-actionsheet__title{
-		height:20%;
-		background:url('http://p3.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177') center center no-repeat;
 		background-size:100% 100%;
-		filter:blur(10px);
+		overflow:hidden;
+		height:20%;
+		.avatar{
+			width:1rem;
+			height:1rem;
+			border-radius:.5rem;
+		}
 	}
 	.weui-actionsheet__menu{
 		flex:1;
@@ -129,9 +133,9 @@ nav.parent-nav{
 		<div class="menu">
       <div class="weui-mask" v-show="showMenu" :style="{opacity:Number(showMenu)}" @click="showMenu=!showMenu"></div>
       <div class="weui-actionsheet" :class="{'weui-actionsheet_toggle':showMenu}">
-          <div class="weui-actionsheet__title">
-              <div class="avatar">
-              	<img src="" alt="">
+          <div class="weui-actionsheet__title" :style="userInfo&&'background-image:url('+userInfo.profile.backgroundUrl+')'">
+              <div class="avatar" v-if="userInfo">
+              	<img :src="userInfo.profile.avatarUrl" alt="">
               </div>
           </div>
           <div class="weui-actionsheet__menu">
