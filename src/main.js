@@ -71,3 +71,15 @@ Vue.directive('infiniteScroll', {
 
   }
 })
+
+Vue.filter('artists', function (value) {
+  let string='';
+  if(value.length>0){
+    for(var x of value){
+      string += x.name+',';
+    }
+    return string.substring(0,string.length-1);
+  }else{
+    return '歌手'
+  }
+})

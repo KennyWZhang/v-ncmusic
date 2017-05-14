@@ -25,11 +25,12 @@ export default {
   },
   methods:{
     ...mapMutations([
-        'INIT_USERINFO',
+        'INIT_USERINFO','INIT_PLAYINFO'
     ]),
   },
   created(){
     this.INIT_USERINFO();
+    this.INIT_PLAYINFO();
   }
 }
 </script>

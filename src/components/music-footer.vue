@@ -41,33 +41,58 @@ footer{
 
 </style>
 <template>
-	<footer class="tabbar">	
+	<footer class="tabbar" @click="$router.push({name:'player'})">	
 		<div class="pic">
-			<img src="http://p4.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177" alt="">
+			<img :src="playInfo?playInfo.album.picUrl:'http://p4.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177'" alt="">
 		</div>
 		<div class="desc">
-			<p>苏打绿</p>
-			<span>空气中的视听与幻觉</span>
+			<p>{{playInfo?playInfo.name:'请选择要播放的音乐'}}</p>
+			<span>{{playInfo.artists | artists}}</span>
 		</div>
 		<div class="bar">
 			<i class="iconfont icon-zanting"></i>
 			<i class="iconfont icon-zhengzaibofang"></i>
 		</div>
+		<audio :src="mp3Url"></audio>
 	</footer>
 </template>
 <script>
-
+import musicHeader from './music-header.vue'
+import {mapState} from 'vuex'
+import fetch from '../config/fetch'
 export default{
+	components:{
+		musicHeader
+	},
 	props:{
 
 	},
 	data(){
 		return{
-
+			mp3Url:null,
+		}
+	},
+	created(){
+		// console.log(this.playInfo)
+	},
+	computed:{
+		...mapState([
+			'playInfo'
+		])
+	},
+	watch:{
+		playInfo:function(val){
+			if(val){
+				this.getMp3Url(this.playInfo.id)
+				// console.log(val)
+			}
 		}
 	},
 	methods:{
-
+		async getMp3Url(id){
+			let re = await fetch('GET','/api/song/enhance/player/url',{ids:[id],'br':999000,'csrf_token':''});
+			this.mp3Url = re;
+		}
 	}
 }
 </script>

@@ -16,7 +16,12 @@ const route = new Router({
         {
           path:'my',name:'my',
           component:resolve => require(['../page/index/my.vue'], resolve)
-        },{
+        },
+        {
+          path:'discover',
+          redirect:'/index/discover/songList'
+        },
+        {
           path:'discover',name:'discover',
           component:resolve => require(['../page/index/discover.vue'], resolve),
           children:[
@@ -49,7 +54,11 @@ const route = new Router({
     {
       path:'/login',name:'login',
       component:resolve => require(['../page/login.vue'],resolve),
-    }
+    },
+    {
+      path:'/player',name:'player',
+      component:resolve => require(['../page/player.vue'],resolve),
+    },
   ]
 })
 route.afterEach((from,to)=>{

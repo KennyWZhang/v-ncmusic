@@ -25,7 +25,8 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Origin':'*'
+                // 'Content-Type': 'application/json',
+                'Origin':'*',
             },
             mode: "cors",
             cache: "force-cache"
@@ -59,6 +60,7 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
 
         requestObj.open(type, url, true);
         requestObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // requestObj.setRequestHeader("Content-type", "application/json");
         requestObj.send(sendData);
 
         requestObj.onreadystatechange = () => {

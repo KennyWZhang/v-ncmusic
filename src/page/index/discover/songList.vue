@@ -59,7 +59,9 @@ nav{
 	<div class="second-container" v-if="data.length > 0"  v-infiniteScroll="getData">
     <div class="inner-container">
   		<header class="desc-head">  
-        <div class="blur-background" :style="'background-image:url('+ data[0].coverImgUrl +')'"></div>
+        <div class="blur-background" :style="'background-image:url('+ data[0].coverImgUrl +')'">
+          <!-- <div class="weui-mask"></div> -->
+        </div>
     		<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
             <img class="weui-media-box__thumb" :src="data[0].coverImgUrl" alt="">

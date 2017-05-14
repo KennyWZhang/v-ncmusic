@@ -7,19 +7,20 @@ nav.parent-nav{
 	width:100%;
 	z-index: 100;
 	background:$red;
-
+}
+nav.transparent-nav{
+  background:transparent;
 }
 .tab{
 	height:.44rem;
 	width:100%;
 	position:relative;
 	color:#fff;
+	display:flex;
 }
 .navbar{
-	position:absolute;
+	// position:relative;
 	width:50%;
-	left:50%;
-	margin-left:-25%;
 	height:100%;
 	@include disFlex();
 }
@@ -42,7 +43,9 @@ nav.parent-nav{
   }
 }
 .nav-right{
-	position:absolute;
+	position:relative;
+	text-align:right;
+	flex:1;
 	right:0;
 	height:.44rem;
 	line-height:.44rem;
@@ -53,11 +56,26 @@ nav.parent-nav{
 	}
 }
 .nav-left{
-	.title{
-		font-size:.16rem;
-		color:#fff;
-		padding-left:.06rem;
+	text-align:left;
+	display:flex;
+	align-items:center;
+	.text{
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		text-align:left;
+		line-height:initial;
+		.title{
+			font-size:.14rem;
+			color:#fff;
+		}
+		.desc{
+			color:#ccc;
+			font-size:.12rem;
+			width:100%;
+		}
 	}
+
 	@extend .nav-right;
 	left:10px;
 	right:inherit;
@@ -105,16 +123,30 @@ nav.parent-nav{
 		background:#efeff4;
 		.weui-cell{
 			background:#fcfcfd;
+			&:active{
+				background:#ececec;
+			}
 		}
 	}
 	.weui-actionsheet__action{
 		justify-content:center;
 		.weui-cell{
-			padding:.1rem .2rem;;
+			padding:.1rem .2rem;
 		}
 	}
 	.weui-cell__bd{
 		padding-left:.1rem;
+		p{font-size:.14rem;}
+		.badge{
+			background:$red;
+			width:.2rem;
+			height:.2rem;
+			line-height:.2rem;
+			border-radius:.1rem;
+			color:#fff;
+			text-align:center;
+			font-size:.12rem;
+		}
 	}
 }
 .gap{
@@ -128,7 +160,10 @@ nav.parent-nav{
 			<div class="nav-left">
 	    	<i class="iconfont icon-list" v-if="contain.menu==true" @click="showMenu=!showMenu"></i>
 	    	<i class="iconfont icon-fanhui" v-if="contain.back==true" @click="$router.back()"></i>
-	    	<span class="title">{{title}}</span>
+	    	<div class="text">
+	    		<p class="title">{{title}}</p>
+	    		<p class="desc">{{desc}}</p>
+	    	</div>
 			</div>
 	    <div class="navbar" v-if="contain.navbar==true">
         <div class="navbar__item" :class="{'active':$route.matched[1].name=='my'}" @click="$router.push({name:'my'})">
@@ -144,6 +179,7 @@ nav.parent-nav{
 	    <div class="nav-right">
 	    	<i class="iconfont icon-chaxun" v-if="contain.search==true"></i>
 	    	<i class="iconfont icon-section" v-if="contain.select==true"></i>
+	    	<i class="iconfont icon-fenxiang" v-if="contain.share==true"></i>
 	    </div>
 		</div>
 		<div class="menu">
@@ -163,8 +199,9 @@ nav.parent-nav{
                   <div class="weui-cell__hd">
                     <i class="iconfont icon-xiaoxi"></i>
                   </div>
-                  <div class="weui-cell__bd">
-                      <p>我的消息</p>
+                  <div class="weui-cell__bd disFlex">
+                      <p class="flex">我的消息</p>
+                      <span class="badge">8</span>
                   </div>
               </a>
               <div class="gap"></div>
@@ -252,13 +289,18 @@ export default{
 					back:true,
 					menu:false,
 					search:false,
-					select:false
+					select:false,
+					share:false
 				}
 			}
 		},
 		title:{
 			type:String,
 			default:'',
+		},
+		desc:{
+			type:String,
+			default:''
 		}
 	},
 	data(){

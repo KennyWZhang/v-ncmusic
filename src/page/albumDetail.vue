@@ -38,7 +38,7 @@
     i{font-size:.2rem;}
     i,p{
       text-align:center;
-      color:#000;
+      color:#fff;
     }
   }
 }
@@ -73,7 +73,8 @@ section .icon-section{
     <music-header style="position:absolute;" :style="bgRed?'background-image:url('+data.coverImgUrl+');opacity:0.3;':'background:transparent'" title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
     <section class="second-container has-footbar" v-if="data" @scroll="changeHeadBg">
       <header class="desc-head has-navbar">  
-        <div class="blur-background " :style="'background-image:url('+ data.coverImgUrl +')'"></div>
+        <div class="blur-background " :style="'background-image:url('+ data.coverImgUrl +')'">
+        </div>
         <div class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
             <img class="weui-media-box__thumb" :src="data.coverImgUrl" alt="">
@@ -92,15 +93,15 @@ section .icon-section{
         <div class="disFlex">
           <div class="flex">
             <i class="iconfont icon-tianjia"></i>
-            <p>{{data.subscribedCount}}</p>
+            <p>{{data.subscribedCount||'收藏'}}</p>
           </div>
           <div class="flex">
             <i class="iconfont icon-pinglun"></i>
-            <p>{{data.commentCount}}</p>
+            <p>{{data.commentCount||'评论'}}</p>
           </div>
           <div class="flex">
             <i class="iconfont icon-fenxiang"></i>
-            <p>{{data.shareCount}}</p>
+            <p>{{data.shareCount||'分享'}}</p>
           </div>
           <div class="flex">
             <i class="iconfont icon-xiazai"></i>
@@ -109,7 +110,7 @@ section .icon-section{
         </div>
       </header>
       <section>
-        <a href="javascript:void(0);" class="disFlex" v-for="(x,index) in data.tracks">
+        <a class="disFlex" v-for="(x,index) in data.tracks" @click="selectSong(x)">
           <a class="weui-media-box weui-media-box_appmsg">
             <div class="tracks-no">
                 {{index+1}}
@@ -126,14 +127,13 @@ section .icon-section{
       </section>
     </section>
     <music-footer></music-footer>
-
 	</div>
 </template>
 
 <script>
 import musicHeader from '../components/music-header.vue'
 import musicFooter from '../components/music-footer.vue'
-
+import {mapActions} from 'vuex'
 import fetch from '../config/fetch'
 export default {
   components:{
@@ -149,16 +149,10 @@ export default {
   created(){
     this.getData();
   },
-  filters: {
-    artists: function (value) {
-      let string='';
-      for(var x of value){
-        string += x.name+',';
-      }
-      return string.substring(0,string.length-1);
-    }
-  },
   methods:{
+    ...mapActions([
+      'selectSong'
+    ]),
     async getData(){
       let re = await fetch('GET','/api/playlist/detail',{id:this.id});
       this.data = re.result;
@@ -170,7 +164,7 @@ export default {
       }else{
         this.bgRed = false;
       }
-    }
+    },
   }
 }
 </script>
