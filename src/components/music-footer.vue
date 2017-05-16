@@ -33,30 +33,32 @@ footer{
 	}
 	.bar{
 		i{
-			padding-right:.1rem;
-			font-size:.2rem;
+			padding-right:.16rem;
+			font-size:.24rem;
 		}
 	}
 }
 
 </style>
 <template>
-	<footer class="tabbar" @click="$router.push({name:'player'})">	
-		<div class="pic">
+	<footer class="tabbar">	
+		<div class="pic"  @click="playInfo&&$router.push({name:'player'})">
 			<img :src="playInfo?playInfo.album.picUrl:'http://p4.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177'" alt="">
 		</div>
-		<div class="desc">
+		<div class="desc" @click="playInfo&&$router.push({name:'player'})">
 			<p>{{playInfo?playInfo.name:'请选择要播放的音乐'}}</p>
-			<span>{{playInfo.artists | artists}}</span>
+			<span v-if="playInfo">{{playInfo.artists | artists}}</span>
 		</div>
 		<div class="bar">
-			<i class="iconfont icon-zanting"></i>
+			<i class="iconfont icon-zanting" v-show="isPlay==false" @click="isPlay=!isPlay"></i>
+			<i class="iconfont icon-bofang" v-show="isPlay==true" @click="isPlay=!isPlay"></i>
 			<i class="iconfont icon-zhengzaibofang"></i>
 		</div>
-		<audio :src="mp3Url"></audio>
+		<audio :src="playInfo.mp3Url" autoplay="autoplay" ref="player"></audio>
 	</footer>
 </template>
 <script>
+import Encrypt from '../config/crypto.js';
 import musicHeader from './music-header.vue'
 import {mapState} from 'vuex'
 import fetch from '../config/fetch'
@@ -69,7 +71,7 @@ export default{
 	},
 	data(){
 		return{
-			mp3Url:null,
+			isPlay:true,
 		}
 	},
 	created(){
@@ -81,18 +83,27 @@ export default{
 		])
 	},
 	watch:{
-		playInfo:function(val){
-			if(val){
-				this.getMp3Url(this.playInfo.id)
-				// console.log(val)
+		// playInfo:function(val){
+		// 	if(val){
+		// 		this.getMp3Url(this.playInfo.id)
+		// 		// console.log(val)
+		// 	}
+		// },
+		isPlay:function(val){
+			if(val==true){
+				this.$refs.player.play();
+			}else{
+				this.$refs.player.pause();
 			}
 		}
 	},
 	methods:{
-		async getMp3Url(id){
-			let re = await fetch('GET','/api/song/enhance/player/url',{ids:[id],'br':999000,'csrf_token':''});
-			this.mp3Url = re;
-		}
+		// async getMp3Url(id){
+		// 	let data = {'ids':[id],'br':999000,'csrf_token':''};
+  // 		const cryptoreq = Encrypt(data);
+		// 	let re = await fetch('POST','/api/song/enhance/player/url',{params:cryptoreq.params,encSecKey:cryptoreq.encSecKey});
+		// 	this.mp3Url = re;
+		// },
 	}
 }
 </script>

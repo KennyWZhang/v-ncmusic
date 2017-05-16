@@ -25,7 +25,7 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/x-www-form-urlencoded',
-                // 'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json;charset=utf-8',
                 'Origin':'*',
             },
             mode: "cors",
@@ -36,6 +36,7 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
             Object.defineProperty(requestConfig, 'body', {
                 value: JSON.stringify(data)
             })
+            // requestConfig.body = JSON.stringify(data);
         }
 
         try {

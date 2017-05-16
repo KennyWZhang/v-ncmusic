@@ -13,8 +13,9 @@
 				<router-view></router-view>
 			</transition>
 		</section>
-
-		<music-footer></music-footer>
+		<keep-alive>
+			<music-footer></music-footer>
+		</keep-alive>
 	</div>
 </template>
 

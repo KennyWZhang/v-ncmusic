@@ -59,6 +59,10 @@ const route = new Router({
       path:'/player',name:'player',
       component:resolve => require(['../page/player.vue'],resolve),
     },
+    {
+      path:'/search',name:'search',
+      component:resolve => require(['../page/search.vue'],resolve),
+    }
   ]
 })
 route.afterEach((from,to)=>{

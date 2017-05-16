@@ -126,7 +126,9 @@ section .icon-section{
         </a>
       </section>
     </section>
-    <music-footer></music-footer>
+    <keep-alive>
+      <music-footer></music-footer>
+    </keep-alive>
 	</div>
 </template>
 

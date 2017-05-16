@@ -7,11 +7,11 @@
 }
 </style>
 <template>
-  <transition name="router-fade" mode="out-in">
-	  <div id="app">
-	    <router-view></router-view>
-	  </div>
-  </transition>
+  <div id="app">
+    <transition name="router-fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -37,6 +37,6 @@ export default {
 <style lang='scss'>
   @import 'style/common.scss';
   @import url('http://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css');
-  @import url('http://at.alicdn.com/t/font_pwvrh2eklceuerk9.css')
+  @import url('http://at.alicdn.com/t/font_b1304fyzu34ygb9.css')
 </style>
 

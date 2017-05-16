@@ -68,6 +68,7 @@ nav.transparent-nav{
 		.title{
 			font-size:.14rem;
 			color:#fff;
+			width:100%;
 		}
 		.desc{
 			color:#ccc;
@@ -177,7 +178,7 @@ nav.transparent-nav{
 	        </div>
 	    </div>
 	    <div class="nav-right">
-	    	<i class="iconfont icon-chaxun" v-if="contain.search==true"></i>
+	    	<i class="iconfont icon-chaxun" v-if="contain.search==true" @click="$router.push({name:'search'})"></i>
 	    	<i class="iconfont icon-section" v-if="contain.select==true"></i>
 	    	<i class="iconfont icon-fenxiang" v-if="contain.share==true"></i>
 	    </div>

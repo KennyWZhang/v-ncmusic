@@ -27,6 +27,7 @@ section{
         <div class="weui-mask"></div>
       </div>
       <music-header :title="playInfo.name" :desc="playInfo.artists | artists" :contain="{share:true,back:true}" class="transparent-nav"></music-header>
+      <audio :src="mp3Url"></audio>
     </div>
   </transition>
 </template>
@@ -40,7 +41,7 @@ export default {
   },
   data () {
     return {
-
+      mp3Url:null
     }
   },
   computed:{
@@ -56,7 +57,7 @@ export default {
     }
   },
   created(){
-
+    // this.mp3Url = getMp3Url(this.playInfo.id);
   },
   filters: {
 
@@ -65,6 +66,10 @@ export default {
   	...mapMutations([
   	    'INIT_PLAYINFO',
   	]),
+    // async getMp3Url(id){
+    //   let re  = await fetch('GET','/api/song/enhance/player/url',{ids:[id]});
+    //   return re;
+    // }
   }
 }
 </script>
