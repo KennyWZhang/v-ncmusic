@@ -11,6 +11,7 @@ const route = new Router({
     },
     {
       path: '/index',name: 'index',
+      redirect:'/index/discover/songList',
       component: resolve => require(['../page/index.vue'], resolve),
       children:[
         {
