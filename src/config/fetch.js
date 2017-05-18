@@ -29,14 +29,19 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
                 'Origin':'*',
             },
             mode: "cors",
-            cache: "force-cache"
+            cache: "force-cache",
         }
 
         if (type == 'POST') {
-            Object.defineProperty(requestConfig, 'body', {
-                value: JSON.stringify(data)
+            let dataStr = ''; //数据拼接字符串
+            Object.keys(data).forEach(key => {
+                dataStr += key + '=' + data[key] + '&';
             })
-            // requestConfig.body = JSON.stringify(data);
+            Object.defineProperty(requestConfig, 'body', {
+                // value: JSON.stringify(data)
+                value:dataStr
+            })
+            // requestConfig.body = data;
         }
 
         try {

@@ -27,7 +27,6 @@ section{
         <div class="weui-mask"></div>
       </div>
       <music-header :title="playInfo.name" :desc="playInfo.artists | artists" :contain="{share:true,back:true}" class="transparent-nav"></music-header>
-      <audio :src="mp3Url"></audio>
     </div>
   </transition>
 </template>

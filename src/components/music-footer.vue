@@ -25,10 +25,13 @@ footer{
 		padding-left:.1rem;
 		p{
 			font-size:.14rem;
+			@include multiTextOverflow(1);
 		}
 		span{
 			font-size:.12rem;
 			color:#999;
+			@include multiTextOverflow(1);
+			
 		}
 	}
 	.bar{
@@ -50,17 +53,15 @@ footer{
 			<span v-if="playInfo">{{playInfo.artists | artists}}</span>
 		</div>
 		<div class="bar">
-			<i class="iconfont icon-zanting" v-show="isPlay==false" @click="isPlay=!isPlay"></i>
-			<i class="iconfont icon-bofang" v-show="isPlay==true" @click="isPlay=!isPlay"></i>
+			<i class="iconfont" :class="playState?'icon-bofang':'icon-zanting'" @click="play"></i>
 			<i class="iconfont icon-zhengzaibofang"></i>
 		</div>
-		<audio :src="playInfo.mp3Url" autoplay="autoplay" ref="player"></audio>
 	</footer>
 </template>
 <script>
 import Encrypt from '../config/crypto.js';
 import musicHeader from './music-header.vue'
-import {mapState} from 'vuex'
+import {mapState,mapActions} from 'vuex'
 import fetch from '../config/fetch'
 export default{
 	components:{
@@ -71,7 +72,7 @@ export default{
 	},
 	data(){
 		return{
-			isPlay:true,
+
 		}
 	},
 	created(){
@@ -79,25 +80,16 @@ export default{
 	},
 	computed:{
 		...mapState([
-			'playInfo'
+			'playInfo','playState'
 		])
 	},
 	watch:{
-		// playInfo:function(val){
-		// 	if(val){
-		// 		this.getMp3Url(this.playInfo.id)
-		// 		// console.log(val)
-		// 	}
-		// },
-		isPlay:function(val){
-			if(val==true){
-				this.$refs.player.play();
-			}else{
-				this.$refs.player.pause();
-			}
-		}
+
 	},
 	methods:{
+		...mapActions([
+			'play'
+		])
 		// async getMp3Url(id){
 		// 	let data = {'ids':[id],'br':999000,'csrf_token':''};
   // 		const cryptoreq = Encrypt(data);

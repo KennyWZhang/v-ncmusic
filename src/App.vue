@@ -11,11 +11,12 @@
     <transition name="router-fade" mode="out-in">
       <router-view></router-view>
     </transition>
+    <audio src="" autoplay="autoplay" ref="player"></audio>
   </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapActions,mapState,mapMutations} from 'vuex'
 export default {
   name: 'app',
   data(){
@@ -24,13 +25,26 @@ export default {
     }
   },
   methods:{
-    ...mapMutations([
-        'INIT_USERINFO','INIT_PLAYINFO'
+    ...mapActions([
+        'initLocal'
     ]),
+    ...mapMutations([
+      'INIT_USERINFO','INIT_PLAYINFO'
+    ])
   },
   created(){
-    this.INIT_USERINFO();
-    this.INIT_PLAYINFO();
+    // this.INIT_USERINFO();
+    // this.INIT_PLAYINFO();
+    this.$store.dispatch('initLocal');
+
+  },
+  computed:{
+    ...mapState([
+      'playInfo'
+    ])
+  },
+  mounted(){
+    this.$store.dispatch('initAudio',this.$refs.player);
   }
 }
 </script>

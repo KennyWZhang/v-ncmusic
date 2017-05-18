@@ -69,11 +69,13 @@ nav.transparent-nav{
 			font-size:.14rem;
 			color:#fff;
 			width:100%;
+			@include multiTextOverflow(1);
 		}
 		.desc{
 			color:#ccc;
 			font-size:.12rem;
 			width:100%;
+			@include multiTextOverflow(1);
 		}
 	}
 

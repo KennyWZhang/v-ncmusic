@@ -4,8 +4,11 @@ const OUT_LOGIN = 'OUT_LOGIN';
 const SIGN_IN = 'SIGN_IN';
 const RECORD_PLAYINFO = 'RECORD_PLAYINFO';
 const INIT_PLAYINFO = 'INIT_PLAYINFO';
+const INIT_AUDIO = 'INIT_AUDIO';
+const PLAY = 'PLAY';
+const PAUSE  = 'PAUSE';
 export default {
-	//网页初始化时从本地缓存获取购物车数据
+	//网页初始化时从本地缓存获取用户数据
 	[INIT_USERINFO](state) {
 		let userInfo = localStorage.getItem('userInfo');
 		if (userInfo) {
@@ -17,8 +20,10 @@ export default {
 		let playInfo = localStorage.getItem('playInfo');
 		if (playInfo) {
 			state.playInfo = JSON.parse(playInfo);
-			state.islogin = true;
 		}
+	},
+	[INIT_AUDIO](state,dom){
+		state.musicDom = dom;
 	},
 	// 记录用户信息
 	[RECORD_USERINFO](state, info) {
@@ -37,5 +42,12 @@ export default {
 	[RECORD_PLAYINFO](state,info){
 		state.playInfo = info;
 		localStorage.setItem('playInfo',JSON.stringify(info))
+	},
+	[PLAY](state){
+		state.playState = true;
+	},
+	[PAUSE](state){
+		state.playState = false;
 	}
+
 }
