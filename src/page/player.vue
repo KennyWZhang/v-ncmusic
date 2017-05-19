@@ -21,13 +21,13 @@ section{
 }
 </style>
 <template>
-  <transition name="router-up" mode="out-in">
+  <!-- <transition name="router-up" mode="out-in"> -->
     <div>
       <div class="blur-background" :style="playInfo&&'background-image:url('+playInfo.al.picUrl+')'">
       </div>
       <music-header :title="playInfo.name" :desc="playInfo.ar | artists" :contain="{share:true,back:true}" class="transparent-nav"></music-header>
     </div>
-  </transition>
+  <!-- </transition> -->
 </template>
 <script>
 import {mapMutations,mapState} from 'vuex'
@@ -46,13 +46,6 @@ export default {
     ...mapState([
       'playInfo'
     ])
-  },
-  watch:{
-    playInfo:function(val){
-      if(val){
-        this.playInfo = val;
-      }
-    }
   },
   created(){
     // this.mp3Url = getMp3Url(this.playInfo.id);

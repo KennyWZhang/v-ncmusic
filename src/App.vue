@@ -8,9 +8,9 @@
 </style>
 <template>
   <div id="app">
-    <transition name="router-fade" mode="out-in">
+    <!-- <transition name="router-fade" mode="out-in"> -->
       <router-view></router-view>
-    </transition>
+    <!-- </transition> -->
     <audio src="" autoplay="autoplay" ref="player"></audio>
   </div>
 </template>

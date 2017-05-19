@@ -15,10 +15,10 @@ export default {
 	},
 	async initAudio({commit,state},dom){
 		await commit('INIT_AUDIO',dom);
-		if(state.playInfo.mp3Url){
+		try{
 			dom.src = state.playInfo.mp3Url
-		}else{
-
+		}catch(e){
+			// throw new Error();
 		}
 	},
 	async selectSong({commit,state},playInfo) {

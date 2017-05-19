@@ -34,10 +34,9 @@ section{
 	</div>
 </template>
 <script>
+import {getLogin} from '../config/api'
 import {mapMutations} from 'vuex'
-import crypto from 'crypto'
 import musicHeader from '../components/music-header.vue'
-import fetch from '../config/fetch'
 export default {
   components:{
     musicHeader
@@ -59,10 +58,7 @@ export default {
   	    'RECORD_USERINFO',
   	]),
     async login(){
-      const md5sum = crypto.createHash('md5')
-      md5sum.update(this.postData.password);
-    	let re = await fetch('GET','/api/login/cellphone',{phone:this.postData.phone,password:md5sum.digest('hex'),rememberLogin:true});
-
+      let re = await getLogin(this.postData.phone,this.postData.password);
       //如果返回的值不正确，则弹出提示框，返回的值正确则返回上一页
       if (re.code!=200) {
       	this.$toast(re.msg)

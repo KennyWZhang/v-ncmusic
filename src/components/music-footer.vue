@@ -46,7 +46,7 @@ footer{
 <template>
 	<footer class="tabbar">	
 		<div class="pic"  @click="playInfo&&$router.push({name:'player'})">
-			<img :src="playInfo?playInfo.al.picUrl:'http://p4.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177'" alt="">
+			<img :src="playInfo?playInfo.al.picUrl:'../../../static/img/default_cover.png'" alt="">
 		</div>
 		<div class="desc" @click="playInfo&&$router.push({name:'player'})">
 			<p>{{playInfo?playInfo.name:'请选择要播放的音乐'}}</p>
