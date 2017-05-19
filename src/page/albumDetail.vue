@@ -46,6 +46,8 @@
   padding:.08rem;
   width:100%;
   align-self: center;
+  overflow: hidden;
+  width: 90%;
 }
 section .icon-section{
   color:#999
@@ -73,7 +75,7 @@ section .icon-section{
 
     <music-header style="position:absolute;" :style="bgRed?'background-image:url('+data.coverImgUrl+');opacity:0.3;':'background:transparent'" title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
     <v-loading :loading="loading" size="big" />
-    
+
     <section class="second-container has-footbar" v-if="!loading" @scroll="changeHeadBg">
       <header class="desc-head has-navbar">  
         <div class="blur-background " :style="'background-image:url('+ data.coverImgUrl +')'">
