@@ -11,7 +11,7 @@
     <!-- <transition name="router-fade" mode="out-in"> -->
       <router-view></router-view>
     <!-- </transition> -->
-    <audio src="" autoplay="autoplay" ref="player"></audio>
+    <audio src="" autoplay="autoplay"  ref="player"></audio>
   </div>
 </template>
 
@@ -36,6 +36,7 @@ export default {
     // this.INIT_USERINFO();
     // this.INIT_PLAYINFO();
     this.$store.dispatch('initLocal');
+
 
   },
   computed:{

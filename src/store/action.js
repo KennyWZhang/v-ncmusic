@@ -13,21 +13,22 @@ export default {
 		commit('INIT_PLAYINFO');
 		// dispatch('initAudio',dom);
 	},
-	async initAudio({commit,state},dom){
+	async initAudio({dispatch,commit,state},dom){
 		await commit('INIT_AUDIO',dom);
 		try{
-			dom.src = state.playInfo.mp3Url
+			dispatch('selectSong',state.playInfo)
 		}catch(e){
 			// throw new Error();
 		}
 	},
-	async selectSong({commit,state},playInfo) {
+	async selectSong({dispatch,commit,state},playInfo) {
 		commit('RECORD_PLAYINFO',playInfo);
 		let id = playInfo.id;
 		let re = await getUrl(id);
 		if(re.code==200) {
 			state.musicDom.src = re.data[0].url;
 		}
+		// dispatch('play');
 	},
 	async play({commit,state}){
 		if (state.playState==false){

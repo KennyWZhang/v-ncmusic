@@ -20,7 +20,7 @@ new Vue({
   store
 })
 
-Vue.prototype.debounce=function(fn, delay) {
+Vue.prototype.$debounce = function(fn, delay) {
   var ctx;
   var args;
   var timer = null;
@@ -45,32 +45,7 @@ Vue.prototype.debounce=function(fn, delay) {
   };
 }
 
-Vue.directive('infiniteScroll', {
-  // 当绑定元素插入到 DOM 中。
-  inserted: function (el,binding,vnode) {
-    // 聚焦元素
-    let oldScrollTop = 0;
-    let debounce = Vue.prototype.debounce(binding.value,100);
-    // console.log(this)
-    el.addEventListener('scroll',function(e){
-    	// let parentNode = el;
-    	let childNode = el.childNodes[0];
-    	let childHeight = childNode.offsetHeight;
-    	let parentHeight = el.offsetHeight;
-    	let scrollTop = el.scrollTop;
-    	// console.log(scrollTop-oldScrollTop)
-    	//滚动到底部执行加载方法
-    	if((childHeight-scrollTop-2 <= parentHeight)&&(scrollTop>oldScrollTop)){
-    		debounce();
-    	}
-    	oldScrollTop = scrollTop //用于判断下一帧是向上还是向下
-    })
-    
-  },
-  update:function(el){
 
-  }
-})
 
 Vue.filter('artists', function (value) {
   let string='';
@@ -83,3 +58,31 @@ Vue.filter('artists', function (value) {
     return '歌手'
   }
 })
+
+
+// Vue.directive('infiniteScroll', {
+//   // 当绑定元素插入到 DOM 中。
+//   inserted: function (el,binding,vnode) {
+//     // 聚焦元素
+//     let oldScrollTop = 0;
+//     let debounce = Vue.prototype.$debounce(binding.value,100);
+//     // console.log(this)
+//     el.addEventListener('scroll',function(e){
+//       // let parentNode = el;
+//       let childNode = el.childNodes[0];
+//       let childHeight = childNode.offsetHeight;
+//       let parentHeight = el.offsetHeight;
+//       let scrollTop = el.scrollTop;
+//       // console.log(scrollTop-oldScrollTop)
+//       //滚动到底部执行加载方法
+//       if((childHeight-scrollTop-2 <= parentHeight)&&(scrollTop>oldScrollTop)){
+//         debounce();
+//       }
+//       oldScrollTop = scrollTop //用于判断下一帧是向上还是向下
+//     })
+    
+//   },
+//   update:function(el){
+
+//   }
+// })

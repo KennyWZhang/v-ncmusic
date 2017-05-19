@@ -20,7 +20,7 @@ header.second-nav{
         position:absolute;
         content:'';
         width:100%;
-        height:.01rem;
+        height:.02rem;
         background:$red;
         left:0;
         bottom:0;
@@ -64,7 +64,7 @@ import fetch from '../../config/fetch'
 export default {
   data () {
     return {
-      innerHeight:window.innerHeight-84*window.innerWidth/375
+      innerHeight:window.innerHeight-110*window.innerWidth/375
     }
   },
   created(){

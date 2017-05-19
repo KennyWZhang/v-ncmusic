@@ -2,7 +2,7 @@
 @import '../style/mixin.scss';
 
 footer{
-	height:.5rem;
+	height:$footer_height;
 	background:#fff;
 	align-items: center;
 	display: flex;
@@ -46,11 +46,11 @@ footer{
 <template>
 	<footer class="tabbar">	
 		<div class="pic"  @click="playInfo&&$router.push({name:'player'})">
-			<img :src="playInfo?playInfo.al.picUrl:'../../../static/img/default_cover.png'" alt="">
+			<img :src="playInfo?playInfo.album.picUrl:'../../../static/img/default_cover.png'" alt="">
 		</div>
 		<div class="desc" @click="playInfo&&$router.push({name:'player'})">
 			<p>{{playInfo?playInfo.name:'请选择要播放的音乐'}}</p>
-			<span v-if="playInfo">{{playInfo.ar | artists}}</span>
+			<span v-if="playInfo">{{playInfo.ar||playInfo.artists | artists}}</span>
 		</div>
 		<div class="bar">
 			<i class="iconfont" :class="playState?'icon-bofang':'icon-zanting'" @click="play"></i>

@@ -70,20 +70,23 @@ section .icon-section{
 
 <template>
 	<div class="parent-container"> 
-    <music-header style="position:absolute;" :style="!bgRed&&'background:transparent'" title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
-    <section class="second-container has-footbar" v-if="data" @scroll="changeHeadBg">
+
+    <music-header style="position:absolute;" :style="bgRed?'background-image:url('+data.coverImgUrl+');opacity:0.3;':'background:transparent'" title="歌单" :contain="{back:true,search:true,select:true}"></music-header>
+    <v-loading :loading="loading" size="big" />
+    
+    <section class="second-container has-footbar" v-if="!loading" @scroll="changeHeadBg">
       <header class="desc-head has-navbar">  
-        <div class="blur-background " :style="'background-image:url('+ coverImgUrl +')'">
+        <div class="blur-background " :style="'background-image:url('+ data.coverImgUrl +')'">
         </div>
         <div class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
-            <img class="weui-media-box__thumb" :src="coverImgUrl+'?param=300y300'" alt="">
+            <img class="weui-media-box__thumb" :src="data.coverImgUrl" alt="">
           </div>
           <div class="weui-media-box__bd">
             <h3 class="weui-media-box__title">{{data.name}}</h3>
             <div class="weui-media-box__desc">
               <div class="avatar">
-                <img :src="data.creator.avatarUrl+'?param=50y50'" alt="">
+                <img :src="data.creator.avatarUrl" alt="">
               </div>
               <span>{{data.creator.nickname}}</span>
               <i class="iconfont icon-next"></i>
@@ -117,7 +120,7 @@ section .icon-section{
             </div>
             <div class="weui-media-box__bd song-desc">
                 <h4 class="weui-media-box__title">{{x.name}}</h4>
-                <p class="weui-media-box__desc">{{x.ar | artists}}</p>
+                <p class="weui-media-box__desc">{{x.artists | artists}}</p>
             </div>
           </a>
           <a class="weui-media-box flex">
@@ -133,20 +136,21 @@ section .icon-section{
 </template>
 
 <script>
+import vLoading from '../components/v-loading.vue'
 import musicHeader from '../components/music-header.vue'
 import musicFooter from '../components/music-footer.vue'
 import {mapActions} from 'vuex'
-import {getAlbumDetail} from '../config/api'
+import fetch from '../config/fetch'
 export default {
   components:{
-    musicHeader,musicFooter
+    musicHeader,musicFooter,vLoading
   },
   data () {
     return {
       id: this.$route.params.id,
-      data:null,
+      data:'',
       bgRed:false,
-      coverImgUrl:this.$route.params.coverImgUrl||'../../static/img/default_cover.png'
+      loading:true
     }
   },
   created(){
@@ -157,8 +161,10 @@ export default {
       'selectSong'
     ]),
     async getData(){
-      let re = await getAlbumDetail(this.id);
-      if(re.code==200) this.data = re.playlist;
+      this.loading = true;
+      let re = await fetch('GET','/api/playlist/detail',{id:this.id});
+      this.data = re.result;
+      this.loading = false;
     },
     changeHeadBg(e){
       // console.log(e)

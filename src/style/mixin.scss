@@ -3,6 +3,9 @@ $red:#e82a2a;
 $bc: #e4e4e4;
 $fc:#fff;
 
+$header_height:.5rem;
+$footer_height:.6rem;
+
 // 背景图片地址和大小
 @mixin bis($url) {
 	background-image: url($url);

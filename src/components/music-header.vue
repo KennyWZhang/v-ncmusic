@@ -12,7 +12,7 @@ nav.transparent-nav{
   background:transparent;
 }
 .tab{
-	height:.44rem;
+	height:$header_height;
 	width:100%;
 	position:relative;
 	color:#fff;
@@ -33,12 +33,14 @@ nav.transparent-nav{
 	.iconfont{
 		color:#ddd;
 		font-size:0.20rem;
-		height: .44rem;	
-   	line-height: .44rem; 
+		height: $header_height;	
+   	line-height: $header_height; 
 	}
   &.active{
     i{
       color:#fff;
+      font-weight:bold;
+      font-size:.24rem;
     }
   }
 }
@@ -47,8 +49,8 @@ nav.transparent-nav{
 	text-align:right;
 	flex:1;
 	right:0;
-	height:.44rem;
-	line-height:.44rem;
+	height:$header_height;
+	line-height:$header_height;
 	i{
 		color:#fff;
 		font-size:.16rem;
@@ -82,6 +84,7 @@ nav.transparent-nav{
 	@extend .nav-right;
 	left:10px;
 	right:inherit;
+	// flex:inherit;
 }
 .weui-actionsheet{
 	min-width:80%;
@@ -160,7 +163,7 @@ nav.transparent-nav{
 <template>
 	<nav class="parent-nav">
 		<div class="tab">
-			<div class="nav-left">
+			<div class="nav-left" :style="title&&'flex:initial;'">
 	    	<i class="iconfont icon-list" v-if="contain.menu==true" @click="showMenu=!showMenu"></i>
 	    	<i class="iconfont icon-fanhui" v-if="contain.back==true" @click="$router.back()"></i>
 	    	<div class="text">
@@ -185,7 +188,7 @@ nav.transparent-nav{
 	    	<i class="iconfont icon-fenxiang" v-if="contain.share==true"></i>
 	    </div>
 		</div>
-		<div class="menu">
+		<div class="menu" v-if="showMenu">
       <div class="weui-mask" v-show="showMenu" :style="{opacity:Number(showMenu)}" @click="showMenu=!showMenu"></div>
       <div class="weui-actionsheet" :class="{'weui-actionsheet_toggle':showMenu}">
           <div class="weui-actionsheet__title" :style="userInfo&&'background-image:url('+userInfo.profile.backgroundUrl+')'">

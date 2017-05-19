@@ -56,8 +56,9 @@ nav{
 </style>
 
 <template>
-	<div class="second-container" v-if="data.length > 0"  v-infiniteScroll="getData">
-    <div class="inner-container">
+	<div class="second-container" ref="parentEl">  
+  <!-- v-infiniteScroll="getData" -->
+    <div class="inner-container" v-if="data.length > 0" ref="parentEl">
   		<header class="desc-head">  
         <div class="blur-background" :style="'background-image:url('+ data[0].coverImgUrl +')'">
         </div>
@@ -96,34 +97,41 @@ nav{
         </transition>
       </section>
     </div>
+    <v-infiniteScroll @loadmore="getData" :loading="loading" :parentEl="parentEl" />
 	</div>
 </template>
 
 <script>
+import vInfiniteScroll from '../../../components/v-infiniteScroll.vue'
 import fetch from '../../../config/fetch'
 import {getSongList} from '../../../config/api'
 export default {
+  components:{vInfiniteScroll},
   data () {
     return {
       data:[],
       offset:0,
       // listNode:null,
       itemHeight:window.innerWidth/2,
+      parentEl:null,
+      loading:false
     }
   },
   created(){
     this.getData();
   },
   mounted(){
-
+    this.parentEl = this.$refs.parentEl;
   },
   computed:{
   },
   methods:{
     async getData(){
+      this.loading = true;
       let re = await getSongList(this.offset);
       this.data = this.data.concat(re.playlists);
       this.offset += 10;
+      this.loading = false;
     },
   }
 }

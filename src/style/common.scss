@@ -119,10 +119,10 @@ body{
   }
 }
 .has-navbar{
-    padding-top:0.5rem;
+    padding-top:$header_height;
 }
 .has-footbar{
-    padding-bottom:0.5rem;
+    padding-bottom:$footer_height;
 }
 .has-sec-navbar{
     padding-top:0.4rem;
