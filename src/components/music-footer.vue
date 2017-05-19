@@ -46,11 +46,11 @@ footer{
 <template>
 	<footer class="tabbar">	
 		<div class="pic"  @click="playInfo&&$router.push({name:'player'})">
-			<img :src="playInfo?playInfo.album.picUrl:'http://p4.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177'" alt="">
+			<img :src="playInfo?playInfo.al.picUrl:'http://p4.music.126.net/qKhyHKOla4OE62iwLhsDgw==/107752139523148.jpg?param=177y177'" alt="">
 		</div>
 		<div class="desc" @click="playInfo&&$router.push({name:'player'})">
 			<p>{{playInfo?playInfo.name:'请选择要播放的音乐'}}</p>
-			<span v-if="playInfo">{{playInfo.artists | artists}}</span>
+			<span v-if="playInfo">{{playInfo.ar | artists}}</span>
 		</div>
 		<div class="bar">
 			<i class="iconfont" :class="playState?'icon-bofang':'icon-zanting'" @click="play"></i>

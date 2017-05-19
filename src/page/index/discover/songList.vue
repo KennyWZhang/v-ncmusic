@@ -60,7 +60,6 @@ nav{
     <div class="inner-container">
   		<header class="desc-head">  
         <div class="blur-background" :style="'background-image:url('+ data[0].coverImgUrl +')'">
-          <!-- <div class="weui-mask"></div> -->
         </div>
     		<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
@@ -85,7 +84,7 @@ nav{
       <section>
         <transition name="showlist" v-if="data">
             <div class="list">
-              <div class="item" v-for="(x,index) in data" @click="$router.push({name:'albumDetail',params:{id:x.id}})">
+              <div class="item" v-for="(x,index) in data" @click="$router.push({name:'albumDetail',params:{id:x.id,coverImgUrl:x.coverImgUrl}})">
                 <div class="pic" :style="{'height':itemHeight+'px'}">
                   <img :src="x.coverImgUrl" alt="">
                 </div>
@@ -102,6 +101,7 @@ nav{
 
 <script>
 import fetch from '../../../config/fetch'
+import {getSongList} from '../../../config/api'
 export default {
   data () {
     return {
@@ -121,7 +121,7 @@ export default {
   },
   methods:{
     async getData(){
-      let re = await fetch('GET','/api/playlist/list',{offset:this.offset,limit:10,order:'hot'});
+      let re = await getSongList(this.offset);
       this.data = this.data.concat(re.playlists);
       this.offset += 10;
     },

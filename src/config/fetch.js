@@ -1,10 +1,10 @@
-import {
-    BaseApiUrl
-} from './env'
+// import {
+//     BaseApiUrl
+// } from './env'
 
-export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
+export default async(type = 'GET', url = '', data = {}, method = '') => {
     type = type.toUpperCase();
-    url = BaseApiUrl + url;
+    // url = BaseApiUrl + url;
 
     if (type == 'GET') {
         let dataStr = ''; //数据拼接字符串
@@ -25,6 +25,7 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Origin': '*',
                 // 'Content-Type': 'application/json;charset=utf-8',
                 'Origin':'*',
             },
@@ -52,35 +53,39 @@ export default async(type = 'POST', url = '', data = {}, method = 'fetch') => {
         }
         return responseJson
     } else {
-        let requestObj;
-        if (window.XMLHttpRequest) {
-            requestObj = new XMLHttpRequest();
-        } else {
-            requestObj = new ActiveXObject;
-        }
+        return new Promise((resolve,reject)=>{
+            let requestObj;
+            if (window.XMLHttpRequest) {
+                requestObj = new XMLHttpRequest();
+            } else {
+                requestObj = new ActiveXObject;
+            }
 
-        let sendData = '';
-        if (type == 'POST') {
-            sendData = JSON.stringify(data);
-        }
-
-        requestObj.open(type, url, true);
-        requestObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // requestObj.setRequestHeader("Content-type", "application/json");
-        requestObj.send(sendData);
-
-        requestObj.onreadystatechange = () => {
-            if (requestObj.readyState == 4) {
-                if (requestObj.status == 200) {
-                    let obj = requestObj.response
-                    if (typeof obj !== 'object') {
-                        obj = JSON.parse(obj);
+            let sendData = '';
+            if (type == 'POST') {
+                sendData = JSON.stringify(data);
+            }
+            requestObj.onreadystatechange = () => {
+                if (requestObj.readyState == 4) {
+                    if (requestObj.status == 200) {
+                        let obj = requestObj.response;
+                        if (typeof obj !== 'object') {
+                            obj = JSON.parse(obj);
+                        }
+                        if(obj){
+                            resolve(obj);
+                        }
+                        // return obj  //这里会报undefined
+                    } else {
+                        // throw new Error(requestObj)
+                        reject(requestObj)
                     }
-                    return obj
-                } else {
-                    throw new Error(requestObj)
                 }
             }
-        }
+
+            requestObj.open(type, url, true);
+            requestObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            requestObj.send(sendData);
+        });
     }
 }

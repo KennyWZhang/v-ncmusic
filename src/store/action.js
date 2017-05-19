@@ -1,4 +1,6 @@
 import fetch from '../config/fetch';
+import {getUrl} from '../config/api';
+
 export default {
 	async sign({commit,state}) {
 		let res = await fetch('GET','/api/point/dailyTask',{type:1});
@@ -22,8 +24,10 @@ export default {
 	async selectSong({commit,state},playInfo) {
 		commit('RECORD_PLAYINFO',playInfo);
 		let id = playInfo.id;
-		let re = await fetch('POST','/api/song/enhance/player/url', {'ids':[id],'br':999000,'csrf_token':''});
-		if(re.code==200) state.musicDom.src = re.data.url;
+		let re = await getUrl(id);
+		if(re.code==200) {
+			state.musicDom.src = re.data[0].url;
+		}
 	},
 	async play({commit,state}){
 		if (state.playState==false){

@@ -184,7 +184,7 @@ header.desc-head{
 }
 .blur-background{
   background-position: center center;
-  filter: blur(.6rem);
+  filter: blur(0.6rem) brightness(0.6);
   position:absolute;
   width:100%;
   top:0;

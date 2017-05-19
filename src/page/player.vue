@@ -23,10 +23,9 @@ section{
 <template>
   <transition name="router-up" mode="out-in">
     <div>
-      <div class="blur-background" :style="playInfo&&'background-image:url('+playInfo.album.picUrl+')'">
-        <div class="weui-mask"></div>
+      <div class="blur-background" :style="playInfo&&'background-image:url('+playInfo.al.picUrl+')'">
       </div>
-      <music-header :title="playInfo.name" :desc="playInfo.artists | artists" :contain="{share:true,back:true}" class="transparent-nav"></music-header>
+      <music-header :title="playInfo.name" :desc="playInfo.ar | artists" :contain="{share:true,back:true}" class="transparent-nav"></music-header>
     </div>
   </transition>
 </template>
