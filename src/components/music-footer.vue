@@ -7,7 +7,7 @@ footer{
 	align-items: center;
 	display: flex;
 	position: absolute;
-	z-index: 99;
+	z-index: 100;
 	bottom: 0;
 	width: 100%;
 	background-color: #f7f7fa;
@@ -40,22 +40,80 @@ footer{
 			font-size:.24rem;
 		}
 	}
+	.weui-actionsheet{
+		$cell_height:.4rem;
+		text-align:left;
+		font-size:.14rem;
+		background:#fff;
+		.header{
+			height:$cell_height;
+			line-height:$cell_height;
+			padding:0 .1rem;
+			display:flex;
+			.cell{
+				padding-left:.1rem;
+			}
+			div i{
+				padding-right:.04rem;
+			}
+		}
+		.weui-actionsheet__menu{
+			overflow:scroll;
+			height:$cell_height*5;
+			.weui-cell{
+				text-align:left;
+				font-size:.14rem;
+				padding:0 .1rem;
+				height:$cell_height;
+				line-height:$cell_height;
+				.cell-title{
+					flex:1;
+					span{
+						font-size:.12rem;
+						color:#999;
+					}
+				}
+				i{
+					color:#999;
+				}
+			}
+		}
+
+	}
 }
 
 </style>
 <template>
 	<footer class="tabbar">	
-		<div class="pic"  @click="playInfo&&$router.push({name:'player'})">
-			<img :src="playInfo?playInfo.album.picUrl:'../../../static/img/default_cover.png'" alt="">
+		<div class="pic"  @click="playInfo.id&&$router.push({name:'player'})">
+			<img :src="playInfo.al.picUrl+'?param=50y50'" alt="">
 		</div>
-		<div class="desc" @click="playInfo&&$router.push({name:'player'})">
-			<p>{{playInfo?playInfo.name:'请选择要播放的音乐'}}</p>
-			<span v-if="playInfo">{{playInfo.ar||playInfo.artists | artists}}</span>
+		<div class="desc" @click="playInfo.id&&$router.push({name:'player'})">
+			<p>{{playInfo.name?playInfo.name:'请选择要播放的音乐'}}</p>
+			<span>{{playInfo.ar||'' | artists}}</span>
 		</div>
 		<div class="bar">
 			<i class="iconfont" :class="playState?'icon-bofang':'icon-zanting'" @click="play"></i>
 			<i class="iconfont icon-zhengzaibofang"></i>
 		</div>
+		<div v-show="showPlayList">
+	    <div class="weui-mask" id="iosMask" style="opacity: 1;"></div>
+	    <div class="weui-actionsheet weui-actionsheet_toggle">
+        <div class="header">
+					<div class="flex">
+						<i class="iconfont icon-liebiaoxunhuan"></i>列表循环(10)
+					</div>
+					<div class="cell"><i class="iconfont icon-tianjia"></i>收藏</div>
+					<div class="cell"><i class="iconfont icon-laji"></i>清空</div>
+        </div>
+        <div class="weui-actionsheet__menu">
+          <div class="weui-cell">
+          	<p class="cell-title">适当放松的<span>-哈哈</span></p>
+          	<i class="iconfont icon-shanchu"></i>
+          </div>
+        </div>
+	    </div>
+    </div>
 	</footer>
 </template>
 <script>
@@ -72,7 +130,7 @@ export default{
 	},
 	data(){
 		return{
-
+			showPlayList:false,
 		}
 	},
 	created(){
@@ -90,12 +148,7 @@ export default{
 		...mapActions([
 			'play'
 		])
-		// async getMp3Url(id){
-		// 	let data = {'ids':[id],'br':999000,'csrf_token':''};
-  // 		const cryptoreq = Encrypt(data);
-		// 	let re = await fetch('POST','/api/song/enhance/player/url',{params:cryptoreq.params,encSecKey:cryptoreq.encSecKey});
-		// 	this.mp3Url = re;
-		// },
+
 	}
 }
 </script>

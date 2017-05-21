@@ -78,11 +78,11 @@ section .icon-section{
 
     <section class="second-container has-footbar" v-if="!loading" @scroll="changeHeadBg">
       <header class="desc-head has-navbar">  
-        <div class="blur-background " :style="'background-image:url('+ data.coverImgUrl +')'">
+        <div class="blur-background " :style="'background-image:url('+ (backgroundUrl==undefined ?'static/img/default_cover.png': backgroundUrl)+'?param=80y80)'">
         </div>
         <div class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
-            <img class="weui-media-box__thumb" :src="data.coverImgUrl" alt="">
+            <img class="weui-media-box__thumb" :src="(backgroundUrl||'static/img/default_cover.png')+'?param=80y80'" alt="">
           </div>
           <div class="weui-media-box__bd">
             <h3 class="weui-media-box__title">{{data.name}}</h3>
@@ -122,7 +122,7 @@ section .icon-section{
             </div>
             <div class="weui-media-box__bd song-desc">
                 <h4 class="weui-media-box__title">{{x.name}}</h4>
-                <p class="weui-media-box__desc">{{x.artists | artists}}</p>
+                <p class="weui-media-box__desc">{{x.ar | artists}}</p>
             </div>
           </a>
           <a class="weui-media-box flex">
@@ -142,7 +142,7 @@ import vLoading from '../components/v-loading.vue'
 import musicHeader from '../components/music-header.vue'
 import musicFooter from '../components/music-footer.vue'
 import {mapActions} from 'vuex'
-import fetch from '../config/fetch'
+import  {getAlbumDetail} from '../config/api'
 export default {
   components:{
     musicHeader,musicFooter,vLoading
@@ -152,7 +152,8 @@ export default {
       id: this.$route.params.id,
       data:'',
       bgRed:false,
-      loading:true
+      loading:true,
+      backgroundUrl:this.$route.params.coverImgUrl
     }
   },
   created(){
@@ -164,8 +165,8 @@ export default {
     ]),
     async getData(){
       this.loading = true;
-      let re = await fetch('GET','/api/playlist/detail',{id:this.id});
-      this.data = re.result;
+      let re = await getAlbumDetail(this.id);
+      this.data = re.playlist;
       this.loading = false;
     },
     changeHeadBg(e){

@@ -55,7 +55,7 @@ Vue.filter('artists', function (value) {
     }
     return string.substring(0,string.length-1);
   }else{
-    return '歌手'
+    return '演唱者'
   }
 })
 

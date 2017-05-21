@@ -95,7 +95,6 @@ nav.transparent-nav{
   display:flex;
   flex-direction:column;
   &.weui-actionsheet_toggle {
-      -webkit-transform: translate(0);
       transform: translate(0);
   }
 	.weui-actionsheet__title{
@@ -188,17 +187,17 @@ nav.transparent-nav{
 	    	<i class="iconfont icon-fenxiang" v-if="contain.share==true"></i>
 	    </div>
 		</div>
-		<div class="menu" v-if="showMenu">
+		<div class="menu">
       <div class="weui-mask" v-show="showMenu" :style="{opacity:Number(showMenu)}" @click="showMenu=!showMenu"></div>
       <div class="weui-actionsheet" :class="{'weui-actionsheet_toggle':showMenu}">
-          <div class="weui-actionsheet__title" :style="userInfo&&'background-image:url('+userInfo.profile.backgroundUrl+')'">
+          <div class="weui-actionsheet__title" :style="'background-image:url('+userInfo.profile.backgroundUrl+'?param=400y200)'">
           		<div class="flex">
-          			<div class="avatar" v-if="userInfo">
-          				<img :src="userInfo.profile.avatarUrl" alt="">
-          				<p>{{userInfo.profile.nickname}}</p>
+          			<div class="avatar">
+          				<img :src="userInfo.profile.avatarUrl">
+          				<p>{{userInfo.profile.nickname||'请登录'}}</p>
           			</div>
           		</div>
-              <div class="btn" @click="sign()">{{isSign?'已签到':'签到'}}</div>
+              <div class="btn" v-if="isLogin" @click="sign()">{{isSign?'已签到':'签到'}}</div>
           </div>
           <div class="weui-actionsheet__menu">
               <a class="weui-cell weui-cell_access">
@@ -207,7 +206,7 @@ nav.transparent-nav{
                   </div>
                   <div class="weui-cell__bd disFlex">
                       <p class="flex">我的消息</p>
-                      <span class="badge">8</span>
+                      <!-- <span class="badge">8</span> -->
                   </div>
               </a>
               <div class="gap"></div>
@@ -262,7 +261,7 @@ nav.transparent-nav{
 						        <p>设置</p>
 						    </div>
 						</a>
-						<a class="weui-cell weui-cell_access" @click="logout()" v-if="userInfo">
+						<a class="weui-cell weui-cell_access" @click="logout()" v-if="isLogin">
 						    <div class="weui-cell__hd">
 						      <i class="iconfont icon-tuichu"></i>
 						    </div>
@@ -270,7 +269,7 @@ nav.transparent-nav{
 						        <p>退出</p>
 						    </div>
 						</a>
-						<a class="weui-cell weui-cell_access" @click="$router.push({name:'login'})" v-if="!userInfo">
+						<a class="weui-cell weui-cell_access" @click="$router.push({name:'login'})" v-if="!isLogin">
 						    <div class="weui-cell__hd">
 						      <i class="iconfont icon-erji"></i>
 						    </div>
@@ -316,7 +315,7 @@ export default{
 	},
 	computed: {
 	    ...mapState([
-	        'userInfo','isSign'
+	        'userInfo','isSign','isLogin'
 	    ]),
 	},
 	methods:{

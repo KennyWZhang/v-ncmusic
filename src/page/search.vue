@@ -3,11 +3,11 @@
 .search-bar{
   display:flex;
   background:$red;
-  height:.4rem;
+  height:$header_height;
   .btn{
     i{color:#fff}
-    height:.4rem;
-    line-height:.4rem;
+    height:$header_height;
+    line-height:$header_height;
     padding:0 .1rem;
   }
   .input{

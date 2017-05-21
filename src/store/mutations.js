@@ -11,15 +11,31 @@ export default {
 	//网页初始化时从本地缓存获取用户数据
 	[INIT_USERINFO](state) {
 		let userInfo = localStorage.getItem('userInfo');
-		if (userInfo) {
-			state.userInfo = JSON.parse(userInfo);
-			state.islogin = true;
+		userInfo = JSON.parse(userInfo)||{};
+		if (userInfo.hasOwnProperty('id')) {
+			state.userInfo = userInfo;
+			state.isLogin = true;
+		}else{
+			state.userInfo={
+				profile:{
+					avatarUrl:'static/img/default_cover.png',
+					backgroundUrl:'static/img/default_user_bg.jpg'
+				}
+			}
+			state.isLogin=false;
 		}
 	},
 	[INIT_PLAYINFO](state){
 		let playInfo = localStorage.getItem('playInfo');
-		if (playInfo) {
-			state.playInfo = JSON.parse(playInfo);
+		playInfo = JSON.parse(playInfo) || {};
+		if (playInfo.hasOwnProperty('id')) {
+			state.playInfo = playInfo;
+		}else{
+			state.playInfo = {
+				al:{
+					picUrl:'static/img/default_cover.png'
+				}
+			}
 		}
 	},
 	[INIT_AUDIO](state,dom){
@@ -29,12 +45,12 @@ export default {
 	[RECORD_USERINFO](state, info) {
 		state.userInfo = info;
 		localStorage.setItem('userInfo',JSON.stringify(info))
-		state.islogin = true;
+		state.isLogin = true;
 	},
 	//退出登录
 	[OUT_LOGIN](state) {
 		state.userInfo = null;
-		state.islogin = false;
+		state.isLogin = false;
 	},
 	[SIGN_IN](state){
 		state.isSign = true;

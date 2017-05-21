@@ -7,7 +7,7 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-    islogin:null, //是否登录
+    isLogin:null, //是否登录
     userInfo:null, //用户信息
     isSign:null, //是否签到
     playInfo:null, //正在播放的歌曲

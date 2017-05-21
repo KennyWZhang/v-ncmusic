@@ -22,11 +22,13 @@ export default {
 		}
 	},
 	async selectSong({dispatch,commit,state},playInfo) {
-		commit('RECORD_PLAYINFO',playInfo);
-		let id = playInfo.id;
-		let re = await getUrl(id);
-		if(re.code==200) {
-			state.musicDom.src = re.data[0].url;
+		if(playInfo.id){
+			commit('RECORD_PLAYINFO',playInfo);
+			let id = playInfo.id;
+			let re = await getUrl(id);
+			if(re.code==200) {
+				state.musicDom.src = re.data[0].url;
+			}
 		}
 		// dispatch('play');
 	},

@@ -10,7 +10,7 @@
   text-align: center;
   bottom: .4rem;
   .weui-loading{
-    background:transparent url('../../static/img/loading.png') center center no-repeat;
+    background:transparent url('static/loading.png') center center no-repeat;
     background-size:100% 100%;
     width:1rem;
     height:1rem;
