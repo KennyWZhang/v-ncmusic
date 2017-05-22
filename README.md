@@ -20,7 +20,13 @@
 `sass` + `weui` 纯css 并没有用到现成的一些开源组件库。
 
 `http-proxy-middleware` 伪造请求头
-
+ 
+## 公共组件
+- [x] 公共header 
+- [x] 公共footer 
+- [x] v-loading 加载提示组件
+- [x] v-infiniteScroll 无限滚动组件
+ 
 
 ## 目前实现功能
 
@@ -41,7 +47,8 @@
 
 
 
-## TODO
+## TODO 即将开放
+
 ### 音乐播放
 - [x] 上一曲
 - [x] 下一曲
@@ -66,6 +73,7 @@
 
 
 ## 一些注意事项
+
 项目中使用了官方的接口，需要使用`http-proxy-middleware`进行转发，开发环境下需要在`config/index.js`中的`dev`中添加下列配置即可，注意：使用官方api的功能线上不可用，如登录功能。
 ```
 proxyTable: {
