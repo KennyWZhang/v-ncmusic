@@ -1,10 +1,12 @@
 # v-ncmusic 
+
 > 一个基于vue2的网易云音乐移动web版
 
 > a vue project base on Vue && 163music API
 
 ## 在线版
-[预览地址](http://c.damaiplus.com/tn/web/bull-backup/dist/#/index/discover/songList)
+
+<a href="http://c.damaiplus.com/tn/web/bull-backup/dist/#/index/discover/songList" target="_blank">预览地址</a>
 
 ## 歌单列表
 <br><img width="300" src="https://github.com/ron0115/v-ncmusic/blob/master/screenshots/songlist1.png">
@@ -14,8 +16,11 @@
 
 ## 工具&技能
 `vue` + `vuex`+ `vue-router` 
+
 `sass` + `weui` 纯css 并没有用到现成的一些开源组件库。
+
 `http-proxy-middleware` 伪造请求头
+
 
 ## 目前实现功能
 
@@ -106,4 +111,5 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 
 > 前期开发的API来自网易云音乐官方，感谢[Binaryify](https://github.com/Binaryify/NeteaseCloudMusicApi)的整理
+
 > 后期统一替换为线上环境的API，感谢[journey-ad](https://github.com/journey-ad),[java Swing](https://github.com/javaSwing/MusicAPI),提供在线的API地址供使用。
