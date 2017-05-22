@@ -29,6 +29,8 @@ export default {
 			if(re.code==200) {
 				state.musicDom.src = re.data[0].url;
 			}
+		}else{
+			state.playState = false;
 		}
 		// dispatch('play');
 	},

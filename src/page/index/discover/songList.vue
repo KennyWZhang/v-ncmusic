@@ -60,11 +60,11 @@ nav{
   <!-- v-infiniteScroll="getData" -->
     <div class="inner-container" v-if="data.length > 0" ref="parentEl">
   		<header class="desc-head">  
-        <div class="blur-background" :style="'background-image:url('+ data[0].coverImgUrl +')'">
+        <div class="blur-background" :style="'background-image:url('+ data[0].coverImgUrl +'?param=100y100)'">
         </div>
     		<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
           <div class="weui-media-box__hd">
-            <img class="weui-media-box__thumb" :src="data[0].coverImgUrl" alt="">
+            <img class="weui-media-box__thumb" :src="data[0].coverImgUrl+'?param=200y200'" alt="">
           </div>
           <div class="weui-media-box__bd">
             <h4 class="weui-media-box__title">精品歌单</h4>
