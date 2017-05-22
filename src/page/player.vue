@@ -23,7 +23,7 @@ section{
 <template>
   <!-- <transition name="router-up" mode="out-in"> -->
     <div>
-      <div class="blur-background" :style="playInfo&&'background-image:url('+playInfo.al.picUrl||'static/img/default_cover.png'+')'">
+      <div class="blur-background" :style="playInfo&&'background-image:url('+playInfo.al.picUrl||'static/img/default_cover.png'+'?param=100y100)'">
       </div>
       <music-header :title="playInfo.name" :desc="playInfo.ar | artists" :contain="{share:true,back:true}" class="transparent-nav"></music-header>
     </div>

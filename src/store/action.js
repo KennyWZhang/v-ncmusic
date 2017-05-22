@@ -24,23 +24,35 @@ export default {
 	async selectSong({dispatch,commit,state},playInfo) {
 		if(playInfo.id){
 			commit('RECORD_PLAYINFO',playInfo);
+			if(JSON.stringify(state.playList).indexOf(JSON.stringify(playInfo))==-1){
+				commit('RECORD_PLAYLIST',playInfo);
+			}
 			let id = playInfo.id;
 			let re = await getUrl(id);
 			if(re.code==200) {
 				state.musicDom.src = re.data[0].url;
+				commit('PLAY');
 			}
 		}else{
-			state.playState = false;
+			commit('PAUSE');
 		}
 		// dispatch('play');
 	},
 	async play({commit,state}){
-		if (state.playState==false){
-      state.musicDom.play();
-      commit('PLAY')
-    }else {
-      state.musicDom.pause();
-      commit('PAUSE')
-    }
+		if(state.playInfo.id){
+			if (state.playState==false){
+	      commit('PLAY')
+	    }else {
+	      commit('PAUSE')
+	    }
+		}else{
+			_this.$toast('没有音乐')
+		}
+	},
+	async clearPlayList({dispatch,commit,state}){
+		state.musicDom.src = null;
+		commit('PAUSE');
+		commit('CLEAR_PLAYINFO');
+		commit('CLEAR_PLAYLIST');
 	}
 }

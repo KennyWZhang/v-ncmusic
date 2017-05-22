@@ -68,9 +68,14 @@ footer{
 				line-height:$cell_height;
 				.cell-title{
 					flex:1;
+					padding-left:.04rem;
+					@include multiTextOverflow(1);
 					span{
 						font-size:.12rem;
 						color:#999;
+					}
+					&.active{
+						color:$red;
 					}
 				}
 				i{
@@ -94,21 +99,23 @@ footer{
 		</div>
 		<div class="bar">
 			<i class="iconfont" :class="playState?'icon-bofang':'icon-zanting'" @click="play"></i>
-			<i class="iconfont icon-zhengzaibofang"></i>
+			<i class="iconfont icon-zhengzaibofang" @click="showPlayList=true"></i>
 		</div>
-		<div v-show="showPlayList">
-	    <div class="weui-mask" id="iosMask" style="opacity: 1;"></div>
-	    <div class="weui-actionsheet weui-actionsheet_toggle">
+		<div>
+	    <div class="weui-mask" :style="{opacity:Number(showPlayList)}" v-show="showPlayList" @click="showPlayList=!showPlayList"></div>
+	    <div class="weui-actionsheet" :class="{'weui-actionsheet_toggle':showPlayList}">
         <div class="header">
 					<div class="flex">
-						<i class="iconfont icon-liebiaoxunhuan"></i>列表循环(10)
+						<i class="iconfont icon-liebiaoxunhuan"></i>列表循环({{playList.length}})
 					</div>
 					<div class="cell"><i class="iconfont icon-tianjia"></i>收藏</div>
-					<div class="cell"><i class="iconfont icon-laji"></i>清空</div>
+					<div class="cell" @click="clearPlayList"><i class="iconfont icon-laji"></i>清空</div>
         </div>
         <div class="weui-actionsheet__menu">
-          <div class="weui-cell">
-          	<p class="cell-title">适当放松的<span>-哈哈</span></p>
+          <div class="weui-cell" v-for="x in playList">
+          	<p class="cell-title" :class="{'active':x==playInfo}">
+          		{{x.name}}<span> - {{x.ar|artists}}</span>
+        		</p>
           	<i class="iconfont icon-shanchu"></i>
           </div>
         </div>
@@ -138,7 +145,7 @@ export default{
 	},
 	computed:{
 		...mapState([
-			'playInfo','playState'
+			'playInfo','playState','playList',
 		])
 	},
 	watch:{
@@ -146,7 +153,7 @@ export default{
 	},
 	methods:{
 		...mapActions([
-			'play'
+			'play','clearPlayList'
 		])
 
 	}

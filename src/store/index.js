@@ -13,6 +13,7 @@ const state = {
     playInfo:null, //正在播放的歌曲
     musicDom:null,
     playState:true,
+    playList:[],
 }
 
 export default new Vuex.Store({
