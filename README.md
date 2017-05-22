@@ -93,10 +93,10 @@ proxyTable: {
 - before May ——搭建项目框架，主要是fetch封装与vue-router的配置。
 - 0501-0506 ——搭建Sass的开发环境，编写主框架的样式
 - 0506 —— 更新songList与无限滚动指令。
-- 0507 —— debounce完善infiniteScroll指令
+- 0507 —— debounce完善infiniteScroll指令（已升级为组件）
 - 0508 —— 歌单页（专辑页）的样式开发。
 - 0522 —— 一直没有时间更新文档，增加了v-loading,v-infiniteScroll 组件，增加生产环境的api地址（感谢各位大牛的贡献）。对VUEX进行大幅度的修改。
-
+ 
 
 
 ## Build Setup
